@@ -1,86 +1,7 @@
 ---
 import Button from '../components/button'
-import Experience from '../components/experience'
+import { services } from '../data/services'
 import MainLayout from '../layouts/main-layout.astro'
-
-
-const services = [
-	{
-		title: 'Remote Work Friendly',
-		text: 'Wi-fi, Internet, and other essentials are provided for you.'
-	},
-	{
-		title: 'Interior Work',
-		text: 'There are many variations of the passages of lorem Ipsum from available, majority.'
-	},
-	{
-		title: 'Realization',
-		text: 'There are many variations of the passages of lorem Ipsum from available, majority.'
-	},
-]
-
-const reviews = [
-	{
-		img: '/natasha.png',
-		name: 'Nattasha Mith',
-		location: 'Sydney, USA',
-		review: 'Lorem Ipsum is simply dummy text of the typesetting industry. Ipsum has been.'
-	},
-	{
-		img: '/benny.png',
-		name: 'Benny Roll',
-		location: 'Sydney, New York',
-		review: 'Lorem Ipsum is simply dummy text of the typesetting industry. Ipsum has been.'
-	},
-	{
-		img: '/raymond.png',
-		name: 'Raymond Galario',
-		location: 'Sydney, Australia',
-		review: 'Lorem Ipsum is simply dummy text of the typesetting industry. Ipsum has been.'
-	},
-]
-
-const projects = [
-	{
-		img: '/project1.png',
-		name: 'Modern Kitchen',
-		text: 'Decor / Artchitecture'
-	},
-	{
-		img: '/project2.png',
-		name: 'Modern Bedroom',
-		text: 'Decor / Artchitecture'
-	},
-	{
-		img: '/project3.png',
-		name: 'Modern Dining Hall',
-		text: 'Decor / Artchitecture'
-	},
-	{
-		img: '/project4.png',
-		name: 'Modern Living Room',
-		text: 'Decor / Artchitecture'
-	},
-]
-
-const experiences = [
-	{
-		num: 12,
-		text:'Years Of Experiance'
-	},
-	{
-		num: 85,
-		text:'Success Project'
-	},
-	{
-		num: 15,
-		text:'Active Project'
-	},
-	{
-		num: 95,
-		text:'Happy Customers'
-	},
-]
 
 ---
 
@@ -129,7 +50,7 @@ const experiences = [
 	</section>
 
 	<!-- What People Think About Us Section -->
-
+<!-- 
 	<section class="lg:max-w-[1200px] px-12 xl:px-0 w-full mx-auto pt-[100px] lg:pt-[200px] ">
 	<div class="w-full flex flex-col bg-primary-300 rounded-[48px] px-6 py-[88px]">
 		<h2 class="font-dm tracking-wide text-center leading-[37px] lg:leading-[62.50px] text-[30px] lg:text-[50px] w-full lg:max-w-[50%] pb-9 mx-auto">Reviews of our properties</h2>
@@ -152,10 +73,10 @@ const experiences = [
 		}
 		</div>
 	</div>
-	</section>
+	</section> -->
 
 	<!-- Experience Section -->
-	<section class="w-full bg-primary-300 px-12 xl:px-0 mx-auto mt-[100px] lg:mt-[200px] py-[151px]">
+	<!-- <section class="w-full bg-primary-300 px-12 xl:px-0 mx-auto mt-[100px] lg:mt-[200px] py-[151px]">
 		<div class="w-full max-w-[1200px] mx-auto flex lg:justify-center items-center overflow-x-scroll no-scrollbar">
 			{
 				experiences.map((exp, i) => {
@@ -165,7 +86,7 @@ const experiences = [
 				})
 			}
 		</div>
-	</section>
+	</section> -->
 </MainLayout>
  
 

@@ -1,4 +1,4 @@
-import Logo from '../icons/logo.tsx';
+import Logo from '../icons/logo';
 
 const Footer = () => {
 	return (

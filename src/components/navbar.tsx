@@ -64,7 +64,7 @@ const Navbar = () => {
 					<a href="/" className={linkStyle}>
 						Home
 					</a>
-					<a href="/loft12" className={linkStyle}>
+					<a href="/properties" className={linkStyle}>
 						Properties
 					</a>
 					<a href="/booking" className={linkStyle}>

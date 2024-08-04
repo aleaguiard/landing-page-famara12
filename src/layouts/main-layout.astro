@@ -5,26 +5,31 @@ import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 
 const { title } = Astro.props as LayoutProps;
+---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Holidays Booking Website" />
-    <title>{title}</title>
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content="Holidays Booking Website" />
+    <meta title = {title}/>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <title>{title}</title>
   </head>
   <body>
     <main class='bg-main bg-no-repeat bg-cover bg-center'>
-      <Navbar client:load />
-      <slot />
+      <Navbar client:load/>
+      <slot/>
       <Footer />
     </main>
     <p class="tracking-tight text-base text-center border border-gray-300 bg-white py-10 lg:text-[22px] lg:leading-[33px] font-jost text-text-gray">
-      Copyright © Famara House 12
+        Copyright © Famara House 12
     </p>
   </body>
 </html>
+
+
