@@ -7,10 +7,10 @@ module.exports = {
 	theme: {
 		extend: {
 			backgroundImage: {
-				hero: "url('./BG1.jpg')",
-				about: "url('/aboutpage-bg.png')",
-				services: "url('/servicespage-bg.jpg')",
-				contact: "url('/contactpage-bg.jpg')",
+				index: "url('./BG1.jpg')",
+				properties: "url('./BG2.jpg')",
+				booking: "url('./BG3.jpg')",
+				contact: "url('./BG5.jpg')",
 			},
 			fontFamily: {
 				dm: ['DM Serif Display', 'serif'],
