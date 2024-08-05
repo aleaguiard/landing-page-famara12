@@ -10,19 +10,15 @@ const Navbar = () => {
 	const linkStyle = 'text-xl leading-6 font-jost text-primary-200';
 
 	return (
-		<div className="max-w-[1200px] px-12 xl:px-0 m-auto w-full py-11 flex justify-between items-center">
-			<a href="/">
-				{' '}
-				<Logo />
-			</a>
-
+		<div className="max-w-[1200px] px-12 xl:px-0 m-auto w-full py-4 flex justify-between items-center">
+			<Logo />
 			{/* Nav List for Desktop */}
 			{matches && (
 				<nav className="flex flex-row gap-6">
 					<a href="/" className={linkStyle}>
 						Home
 					</a>
-					<a href="/loft12" className={linkStyle}>
+					<a href="/properties" className={linkStyle}>
 						Properties
 					</a>
 					<a href="/booking" className={linkStyle}>
@@ -33,7 +29,6 @@ const Navbar = () => {
 					</a>
 				</nav>
 			)}
-
 			{!matches && (
 				<div onClick={() => setToggled(!toggled)} className="space-y-1 cursor-pointer">
 					<motion.span
@@ -54,7 +49,6 @@ const Navbar = () => {
 					></motion.span>
 				</div>
 			)}
-
 			{toggled && !matches && (
 				<motion.nav
 					initial={{ opacity: 0, x: 25 }}
