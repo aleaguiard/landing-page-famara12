@@ -7,7 +7,7 @@ module.exports = {
 	theme: {
 		extend: {
 			backgroundImage: {
-				hero: "url('/banner.png')",
+				hero: "url('./BG1.jpg')",
 				about: "url('/aboutpage-bg.png')",
 				services: "url('/servicespage-bg.jpg')",
 				contact: "url('/contactpage-bg.jpg')",
@@ -29,6 +29,7 @@ module.exports = {
 					'gray-100': '#5F5F5F',
 					'gray-200': '#4D5053',
 					'gray-300': '#E5E5E5',
+					white: '#FFFFFF',
 				},
 			},
 		},
