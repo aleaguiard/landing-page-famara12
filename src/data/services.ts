@@ -30,30 +30,3 @@ export const services = [
 		icon: '/clean-icon.png',
 	},
 ];
-
-export const howWeWorkDetails = [
-	{
-		imgIcon: null,
-		numIcon: 'One',
-		title: 'Concept & Details',
-		info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.',
-	},
-	{
-		imgIcon: null,
-		numIcon: 'Two',
-		title: 'Idea For Work',
-		info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.',
-	},
-	{
-		imgIcon: null,
-		numIcon: 'Three',
-		title: 'Design',
-		info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.',
-	},
-	{
-		imgIcon: null,
-		numIcon: 'Four',
-		title: 'Perfection',
-		info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.',
-	},
-];

@@ -1,54 +1,86 @@
 ---
-import Button from '../components/button'
-import { services } from '../data/services'
-import MainLayout from '../layouts/main-layout.astro'
-
+import Button from '../components/button';
+import { reviews } from '../data/reviews';
+import { services } from '../data/services';
+import MainLayout from '../layouts/main-layout.astro';
 ---
 
-<MainLayout title = 'Famara 12'>
-
+<MainLayout title="Famara 12">
 	<!-- Banner -->
-	
-	<section class="w-full bg-index bg-no-repeat bg-cover h-[screen] lg:min-h-[110vh] px-12 xl:px-0 flex items-center bg-cover bg-no-repeat ">
 
-    <div class="lg:max-w-[1200px] w-full mx-auto flex flex-col py-8">
-        <h1 class="text-[30px] leading-[40px] md:text-[40px] xl:text-[60px] pb-4 font-dm md:leading-[60px] w-full xl:max-w-[55%] text-primary-400">
-            Famara 12
-        </h1>
-        <p class="text-base md:text-[20px] pb-5 font-jost text-text-white w-full lg:max-w-[50%]">
-            Welcome to our beautiful homes. Located in front of Famara Beach, these modern and comfortable properties offer the perfect place to relax and enjoy the sun.
-        </p>
-        <Button text="Book Now" to="/booking"/>
-    </div>
-</section>
-
+	<section
+		class="w-full bg-index bg-no-repeat bg-cover h-[screen] lg:min-h-[110vh] px-12 xl:px-0 flex items-center bg-cover bg-no-repeat"
+	>
+		<div class="lg:max-w-[1200px] w-full mx-auto flex flex-col py-8">
+			<h1
+				class="text-[30px] leading-[40px] md:text-[40px] xl:text-[60px] pb-4 font-dm md:leading-[60px] w-full xl:max-w-[55%] text-primary-400"
+			>
+				Famara 12
+			</h1>
+			<p
+				class="text-base md:text-[20px] pb-5 font-jost text-text-white w-full lg:max-w-[50%]"
+			>
+				Welcome to our beautiful homes. Located in front of Famara Beach, these modern and
+				comfortable properties offer the perfect place to relax and enjoy the sun.
+			</p>
+			<Button text="Book Now" to="/booking" />
+		</div>
+	</section>
 
 	<!-- Services Section -->
 
 	<section class="lg:max-w-[1200px] w-full mx-auto pt-[60px] lg:pt-[100px]">
-    <h2 class="text-[30px] text-center capitalize font-dm tracking-wide lg:max-w-[60%] leading-8 md:leading-[62.50px] md:text-[50px] mx-auto text-text-blue">Services</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 lg:gap-y-12 mt-8">
-        {
-            services.map((service) => {
-                return (
-                    <div class="w-full col-span-1 max-w-[250px] mx-auto flex rounded-[15px] hover:bg-primary-300 px-3 py-[40px] flex-col justify-center items-center gap-2 md:gap-3 shadow-sm">
-                        <img src={service.icon} alt={service.title} class="mb-2" style={{ width: '40px', height: '40px' }} />
-                        <h3 class="text-text-blue font-dm text-[20px] md:text-[22px] leading-loose text-center">{service.title}</h3>
-                        <p class="text-base md:text-[20px] tracking-tight font-jost text-text-gray leading-[30px] text-center">{service.text}</p>
-                    </div>
-                )
-            })
-        }
-    </div>
-</section>
+		<h2
+			class="text-[30px] text-center capitalize font-dm tracking-wide lg:max-w-[60%] leading-8 md:leading-[62.50px] md:text-[50px] mx-auto text-text-blue"
+		>
+			Services
+		</h2>
+		<div
+			class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 lg:gap-y-12 mt-8"
+		>
+			{
+				services.map((service) => {
+					return (
+						<div class="w-full col-span-1 max-w-[250px] mx-auto flex rounded-[15px] hover:bg-primary-300 px-3 py-[40px] flex-col justify-center items-center gap-2 md:gap-3 shadow-sm">
+							<img
+								src={service.icon}
+								alt={service.title}
+								class="mb-2"
+								style={{ width: '40px', height: '40px' }}
+							/>
+							<h3 class="text-text-blue font-dm text-[20px] md:text-[22px] leading-loose text-center">
+								{service.title}
+							</h3>
+							<p class="text-base md:text-[20px] tracking-tight font-jost text-text-gray leading-[30px] text-center">
+								{service.text}
+							</p>
+						</div>
+					);
+				})
+			}
+		</div>
+	</section>
 
 	<!-- Famara Beach Section -->
 
-	<section class="w-full lg:max-w-[1200px] mx-auto px-12 xl:px-0 flex flex-col-reverse justify-center items-center lg:grid grid-cols-2 gap-[75px] pt-[100px] lg:pt-[200px]">
+	<section
+		class="w-full lg:max-w-[1200px] mx-auto px-12 xl:px-0 flex flex-col-reverse justify-center items-center lg:grid grid-cols-2 gap-[75px] pt-[100px] lg:pt-[200px]"
+	>
 		<div class="flex flex-col gap-8 max-w-[472px] items-center lg:items-start">
-			<h2 class="text-[30px] text-center capitalize lg:text-left font-dm tracking-wide leading-8 md:leading-[62.50px] md:text-[50px] text-text-blue ">Famara Beach</h2>
-			<p class="text-base md:text-[22px] text-center lg:text-left tracking-tight font-jost text-text-gray leading-[33px]">Located beneath the majestic Risco de Famara on Lanzarote's northwest coast, Famara Beach is a stunning retreat with golden sands and ideal conditions for surfing and wind sports. This serene location offers a peaceful escape, allowing you to unwind and connect with nature. Stay at our rental house in Famara for an unforgettable coastal getaway</p>
-			
+			<h2
+				class="text-[30px] text-center capitalize lg:text-left font-dm tracking-wide leading-8 md:leading-[62.50px] md:text-[50px] text-text-blue"
+			>
+				Famara Beach
+			</h2>
+			<p
+				class="text-base md:text-[22px] text-center lg:text-left tracking-tight font-jost text-text-gray leading-[33px]"
+			>
+				Located beneath the majestic Risco de Famara on Lanzarote's northwest coast, Famara
+				Beach is a stunning retreat with golden sands and ideal conditions for surfing and
+				wind sports. This serene location offers a peaceful escape, allowing you to unwind
+				and connect with nature. Stay at our rental house in Famara for an unforgettable
+				coastal getaway
+			</p>
 		</div>
 
 		<div>
@@ -57,30 +89,36 @@ import MainLayout from '../layouts/main-layout.astro'
 	</section>
 
 	<!-- What People Think About Us Section -->
-<!-- 
-	<section class="lg:max-w-[1200px] px-12 xl:px-0 w-full mx-auto pt-[100px] lg:pt-[200px] ">
-	<div class="w-full flex flex-col bg-primary-300 rounded-[48px] px-6 py-[88px]">
-		<h2 class="font-dm tracking-wide text-center leading-[37px] lg:leading-[62.50px] text-[30px] lg:text-[50px] w-full lg:max-w-[50%] pb-9 mx-auto">Reviews of our properties</h2>
-		<div class="flex flex-col gap-8 lg:gap-10 lg:flex-row justify-between">
-			{
-			reviews.map((rev) => {
-				return (
-					<div class="w-full bg-white max-w-[370px] px-[37px] py-[53px] rounded-3xl mx-auto flex flex-col justify-center gap-4 md:gap-6">
-						<div class="flex flex-col sm:flex-row gap-6 items-center">
-							<img src={rev.img} alt="" />
-							<p class="flex flex-col tracking-tight leading-9">
-								<span class="text-primary-200 text-lg lg:text-[25px] font-dm">{rev.name}</span>
-								<span class="text-text-gray-200 text-base lg:text-lg font-jost">{rev.location}</span>
-							</p>
-						</div>
-						<p class="font-jost tracking-tight leading-8 text-base text-center sm:text-left text-text-gray lg:text-[22px]">{rev.review}</p>
-					</div>
-			)
-		})
-		}
+
+	<section class="lg:max-w-[1200px] px-12 xl:px-0 w-full mx-auto pt-[100px] lg:pt-[200px]">
+		<div class="w-full flex flex-col bg-primary-300 rounded-[48px] px-6 py-[48px]">
+			<h2
+				class="font-dm tracking-wide text-center leading-[37px] lg:leading-[62.50px] text-[30px] lg:text-[50px] w-full lg:max-w-[75%] pb-9 mx-auto"
+			>
+				Reviews of our properties
+			</h2>
+			<div class="flex flex-col gap-8 lg:gap-10 lg:flex-row justify-between">
+				{
+					reviews.map((rev) => {
+						return (
+							<div class="w-full bg-white max-w-[370px] px-[40px] py-[40px] rounded-3xl mx-auto flex flex-col justify-center items-center gap-4 md:gap-6">
+								<div class="flex flex-col gap-4 items-center">
+									<p class="flex flex-col tracking-tight leading-7 text-center">
+										<span class="text-primary-200 text-lg lg:text-[25px] font-dm">
+											{rev.title}
+										</span>
+										<span class="text-text-gray-200 text-lg lg:text-[20px] font-jost">
+											{rev.info}
+										</span>
+									</p>
+								</div>
+							</div>
+						);
+					})
+				}
+			</div>
 		</div>
-	</div>
-	</section> -->
+	</section>
 
 	<!-- Experience Section -->
 	<!-- <section class="w-full bg-primary-300 px-12 xl:px-0 mx-auto mt-[100px] lg:mt-[200px] py-[151px]">
@@ -95,19 +133,16 @@ import MainLayout from '../layouts/main-layout.astro'
 		</div>
 	</section> -->
 </MainLayout>
- 
 
 <style>
+	/* Hide scrollbar for Chrome, Safari and Opera */
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
 
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-      display: none;
-  }
-
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .no-scrollbar {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
-  }
-
+	/* Hide scrollbar for IE, Edge and Firefox */
+	.no-scrollbar {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
 </style>
