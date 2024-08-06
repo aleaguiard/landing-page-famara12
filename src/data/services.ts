@@ -13,7 +13,7 @@ export const services = [
 	},
 	{
 		title: 'Free WiFi',
-		text: 'Access high-speed WiFi throughout the bungalow.',
+		text: 'Access high-speed WiFi in the entire property.',
 	},
 	{
 		title: 'Parking',
