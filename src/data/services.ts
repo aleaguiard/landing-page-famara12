@@ -21,7 +21,7 @@ export const services = [
 	},
 	{
 		title: 'Parking',
-		text: 'Enjoy convenient and secure parking for guests.',
+		text: 'We offer a private parking space situated conveniently in front of our premises for your comfort.',
 		icon: '/parking-icon.png',
 	},
 	{
