@@ -5,7 +5,6 @@ const Footer = () => {
 		<footer className="mt-[135px] w-full">
 			<div className="w-full max-w-[1200px] px-12 xl:px-0 mx-auto pb-[135px]">
 				<div className="flex justify-center mb-8">
-					{' '}
 					<a href="/" className="">
 						<Logo />
 					</a>
@@ -37,12 +36,11 @@ const Footer = () => {
 							</a>
 						</div>
 					</div>
-					<div className="col-span-1 flex flex-col gap-4 justify-end">
-						{' '}
+					<div className="col-span-1 flex flex-col gap-4 justify-end items-start md:justify-end md:items-end">
 						<h5 className="text-primary-200 font-dm text-[22px] lg:text-[25px] leading-loose">
 							Contact
 						</h5>
-						<div className="flex flex-col gap-6">
+						<div className="flex flex-col gap-6 items-start md:items-end">
 							<p className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray">
 								Calle Doradillas 10, Famara, Lanzarote
 							</p>
