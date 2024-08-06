@@ -5,15 +5,15 @@ import MainLayout from '../layouts/main-layout.astro'
 
 ---
 
-<MainLayout title = 'Famara House 12 - Loft 12'>
+<MainLayout title = 'Famara 12'>
 
 	<!-- Banner -->
 	
-	<section class="w-full bg-index bg-no-repeat bg-cover h-[screen] lg:min-h-[110vh] px-12 xl:px-0 flex items-center bg-cover bg-no-repeat">
+	<section class="w-full bg-index bg-no-repeat bg-cover h-[screen] lg:min-h-[110vh] px-12 xl:px-0 flex items-center bg-cover bg-no-repeat ">
 
-    <div class="lg:max-w-[1200px] w-full mx-auto flex flex-col">
+    <div class="lg:max-w-[1200px] w-full mx-auto flex flex-col py-8">
         <h1 class="text-[30px] leading-[40px] md:text-[40px] xl:text-[60px] pb-4 font-dm md:leading-[60px] w-full xl:max-w-[55%] text-primary-400">
-            Famara House 12 & Loft 12
+            Famara 12
         </h1>
         <p class="text-base md:text-[20px] pb-5 font-jost text-text-white w-full lg:max-w-[50%]">
             Welcome to our beautiful homes. Located in front of Famara Beach, these modern and comfortable properties offer the perfect place to relax and enjoy the sun.
@@ -25,28 +25,27 @@ import MainLayout from '../layouts/main-layout.astro'
 
 	<!-- Services Section -->
 
-	<section class="lg:max-w-[1200px] w-full mx-auto pt-[100px] lg:pt-[200px]">
+	<section class="lg:max-w-[1200px] w-full mx-auto pt-[60px] lg:pt-[100px]">
     <h2 class="text-[30px] text-center capitalize font-dm tracking-wide lg:max-w-[60%] leading-8 md:leading-[62.50px] md:text-[50px] mx-auto text-text-blue">Services</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 lg:gap-y-12 mt-8">
         {
             services.map((service) => {
                 return (
                     <div class="w-full col-span-1 max-w-[250px] mx-auto flex rounded-[15px] hover:bg-primary-300 px-3 py-[40px] flex-col justify-center items-center gap-2 md:gap-3 shadow-sm">
-                        <h3 class="text-text-blue font-dm text-[20px] md:text-[22px] leading-loose">{service.title}</h3>
+                        <img src={service.icon} alt={service.title} class="mb-2" style={{ width: '40px', height: '40px' }} />
+                        <h3 class="text-text-blue font-dm text-[20px] md:text-[22px] leading-loose text-center">{service.title}</h3>
                         <p class="text-base md:text-[20px] tracking-tight font-jost text-text-gray leading-[30px] text-center">{service.text}</p>
                     </div>
                 )
             })
         }
     </div>
-	</section>
-
-
+</section>
 
 	<!-- Famara Beach Section -->
 
 	<section class="w-full lg:max-w-[1200px] mx-auto px-12 xl:px-0 flex flex-col-reverse justify-center items-center lg:grid grid-cols-2 gap-[75px] pt-[100px] lg:pt-[200px]">
-		<div class="flex flex-col gap-8 max-w-[472px] items-center lg:items-start py-6">
+		<div class="flex flex-col gap-8 max-w-[472px] items-center lg:items-start">
 			<h2 class="text-[30px] text-center capitalize lg:text-left font-dm tracking-wide leading-8 md:leading-[62.50px] md:text-[50px] text-text-blue ">Famara Beach</h2>
 			<p class="text-base md:text-[22px] text-center lg:text-left tracking-tight font-jost text-text-gray leading-[33px]">Located beneath the majestic Risco de Famara on Lanzarote's northwest coast, Famara Beach is a stunning retreat with golden sands and ideal conditions for surfing and wind sports. This serene location offers a peaceful escape, allowing you to unwind and connect with nature. Stay at our rental house in Famara for an unforgettable coastal getaway</p>
 			
