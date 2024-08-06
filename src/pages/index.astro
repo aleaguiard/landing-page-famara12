@@ -7,7 +7,6 @@ import MainLayout from '../layouts/main-layout.astro';
 
 <MainLayout title="Famara 12">
 	<!-- Banner -->
-
 	<section
 		class="w-full bg-index bg-no-repeat bg-cover h-[screen] lg:min-h-[110vh] px-12 xl:px-0 flex items-center bg-cover bg-no-repeat"
 	>
@@ -28,16 +27,14 @@ import MainLayout from '../layouts/main-layout.astro';
 	</section>
 
 	<!-- Services Section -->
-
-	<section class="lg:max-w-[1200px] w-full mx-auto pt-[60px] lg:pt-[100px]">
+	<section class="lg:max-w-[1200px] w-full mx-auto pt-16 lg:pt-24">
 		<h2
 			class="text-[30px] text-center capitalize font-dm tracking-wide lg:max-w-[60%] leading-8 md:leading-[62.50px] md:text-[50px] mx-auto text-text-blue"
 		>
 			Services
 		</h2>
-		<div
-			class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 lg:gap-y-12 mt-8"
-		>
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 lg:gap-y-10 mt-4">
+			<!-- Ajuste aquí -->
 			{
 				services.map((service) => {
 					return (
@@ -62,9 +59,8 @@ import MainLayout from '../layouts/main-layout.astro';
 	</section>
 
 	<!-- Famara Beach Section -->
-
 	<section
-		class="w-full lg:max-w-[1200px] mx-auto px-12 xl:px-0 flex flex-col-reverse justify-center items-center lg:grid grid-cols-2 gap-[75px] pt-[100px] lg:pt-[200px]"
+		class="w-full lg:max-w-[1200px] mx-auto px-12 xl:px-0 flex flex-col-reverse justify-center items-center lg:grid grid-cols-2 gap-[50px] pt-16 lg:pt-24"
 	>
 		<div class="flex flex-col gap-8 max-w-[472px] items-center lg:items-start">
 			<h2
@@ -89,15 +85,14 @@ import MainLayout from '../layouts/main-layout.astro';
 	</section>
 
 	<!-- What People Think About Us Section -->
-
-	<section class="lg:max-w-[1200px] px-12 xl:px-0 w-full mx-auto pt-[100px] lg:pt-[200px]">
+	<section class="lg:max-w-[1200px] px-12 xl:px-0 w-full mx-auto pt-16 lg:pt-24">
 		<div class="w-full flex flex-col bg-primary-300 rounded-[48px] px-6 py-[48px]">
 			<h2
 				class="font-dm tracking-wide text-center leading-[37px] lg:leading-[62.50px] text-[30px] lg:text-[50px] w-full lg:max-w-[75%] pb-9 mx-auto"
 			>
 				Reviews of our properties
 			</h2>
-			<div class="flex flex-col gap-8 lg:gap-10 lg:flex-row justify-between">
+			<div class="flex flex-col gap-6 lg:gap-8 lg:flex-row justify-between">
 				{
 					reviews.map((rev) => {
 						return (
@@ -119,19 +114,6 @@ import MainLayout from '../layouts/main-layout.astro';
 			</div>
 		</div>
 	</section>
-
-	<!-- Experience Section -->
-	<!-- <section class="w-full bg-primary-300 px-12 xl:px-0 mx-auto mt-[100px] lg:mt-[200px] py-[151px]">
-		<div class="w-full max-w-[1200px] mx-auto flex lg:justify-center items-center overflow-x-scroll no-scrollbar">
-			{
-				experiences.map((exp, i) => {
-					return(
-						<Experience text={exp.text} num={exp.num} i={i} client:load />
-					)
-				})
-			}
-		</div>
-	</section> -->
 </MainLayout>
 
 <style>

@@ -1,8 +1,8 @@
 export const properties = [
 	{
-		title: 'Famara House 12',
+		title: 'House 12',
 		description:
-			'A completely independent loft with modern design and comfortable furniture. It is the perfect place to relax and enjoy the sun, whether alone or with a partner.',
+			"Entire house with two bedrooms, accommodating up to 4 guests. Fully equipped and modern, it's the perfect place to enjoy quality time with your family.",
 		buttonText: 'Book Now',
 		images: [
 			'/FH1.jpg',
@@ -30,7 +30,7 @@ export const properties = [
 		],
 	},
 	{
-		title: 'Famara Loft 12',
+		title: 'Loft 12',
 		description:
 			'A completely independent loft with modern design and comfortable furniture. It is the perfect place to relax and enjoy the sun, whether alone or with a partner.',
 		buttonText: 'Book Now',
