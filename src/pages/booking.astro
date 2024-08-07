@@ -1,4 +1,5 @@
 ---
+import BookingCalendar from '../components/booking-calendar';
 import { bookingInfo } from '../data/booking-info';
 import MainLayout from '../layouts/main-layout.astro';
 ---
@@ -8,35 +9,34 @@ import MainLayout from '../layouts/main-layout.astro';
 
 	<section class="w-full bg-booking h-[50vh] flex justify-center items-end bg-cover bg-no-repeat">
 		<div
-			class="py-[30px] lg:py-[41px] px-[60px] lg:px-[152px] flex flex-col justify-center items-center bg-white rounded-tl-[37px] rounded-tr-[37px] gap-2.5"
+			class="py-[20px] lg:py-[30px] px-[40px] lg:px-[100px] flex flex-col justify-center items-center bg-white rounded-tl-[37px] rounded-tr-[37px] gap-2"
 		>
 			<h1
-				class="text-[30px] leading-[40px] lg:text-[50px] lg:leading-[62px] font-dm capitalize text-primary-200"
+				class="text-[25px] leading-[35px] lg:text-[40px] lg:leading-[52px] font-dm capitalize text-primary-200"
 			>
 				Booking
 			</h1>
 			<p
-				class="text-base lg:text-[22px] lg:leading-[33px] tracking-tight font-jost text-text-gray"
+				class="text-sm lg:text-[18px] lg:leading-[25px] tracking-tight font-jost text-text-gray"
 			>
 				<a href="/">Home</a> / Booking
 			</p>
 		</div>
 	</section>
 
-	<!-- Services Section -->
+	<!-- Booking Info Section -->
 
 	<section
-		class="lg:max-w-[1200px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 lg:gap-y-12 xl:px-0 w-full mx-auto pt-[100px] lg:pt-[200px] justify-between"
+		class="lg:max-w-[800px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 lg:gap-y-5 xl:px-0 w-full mx-auto pt-[20px] lg:pt-[40px] justify-between"
 	>
 		{
 			bookingInfo.map((bookingInfo) => {
 				return (
-					<div class="w-full col-span-1 max-w-[358px] mx-auto flex rounded-[30px] hover:bg-primary-300 px-5 py-[83px] flex-col justify-center items-center gap-3 md:gap-5">
-						<h3 class="text-text-blue font-dm text-[22px] md:text-[25px] leading-loose">
+					<div class="w-full col-span-1 max-w-[250px] mx-auto flex rounded-[15px] hover:bg-primary-300 px-2 py-[30px] flex-col justify-center items-center gap-1 md:gap-2">
+						<h3 class="text-text-blue font-dm text-[16px] md:text-[18px] leading-loose">
 							{bookingInfo.title}
 						</h3>
-						<p class="text-base md:text-[22px] tracking-tight font-jost text-text-gray leading-[33px] text-center">
-							{' '}
+						<p class="text-xs md:text-[16px] tracking-tight font-jost text-text-gray leading-[20px] text-center">
 							{bookingInfo.text}
 						</p>
 					</div>
@@ -45,63 +45,6 @@ import MainLayout from '../layouts/main-layout.astro';
 		}
 	</section>
 
-	<!-- Loft Section -->
-	<section class="px-12 xl:px-0 w-full mt-[100px] lg:mt-[200px] min-h-screen">
-		<div
-			class="w-full lg:max-w-[1200px] p-12 mx-auto lg:px-[116px] lg:py-[160px] bg-primary-300 rounded-[70px]"
-		>
-			<h2
-				class="font-dm tracking-wide text-center leading-[37px] lg:leading-[62.50px] text-[30px] lg:text-[50px] w-full capitalize lg:max-w-[50%] pb-2 mx-auto"
-			>
-				CALENDAR TO BOOK
-			</h2>
-			<p
-				class="text-base md:text-[22px] text-center tracking-tight font-jost text-text-gray leading-[33px] lg:max-w-[60%] mx-auto"
-			>
-				CALENDAR
-			</p>
-
-			<div class="pt-[70px] lg:pt-[100px] flex flex-col gap-[70px]">
-				<!-- Inner Sections -->
-
-				<!-- {
-        howWeWorkDetails.map((detail, index) => {
-          const ImageIcon = detail.imgIcon
-          const NumberIcon = detail.numIcon
-          const className = `flex justify-between flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-[50px] items-center max-w-[967px]`
-
-          return(
-            <div class={className}>
-              {/* <img src={detail.img} alt=""/> */}
-              <div class="flex flex-col gap-12 lg:gap-[58px]">
-                <div class="justify-between hidden lg:flex">
-                  <NumberIcon/>
-                </div>
-                <div class="flex flex-col gap-3">
-                  <h3 class="text-text-blue font-dm text-[22px] md:text-[25px] leading-loose">{detail.title}</h3>
-                  <p class="text-base md:text-[22px] tracking-tight font-jost text-text-gray leading-[33px]">{detail.info}</p>
-                </div>
-              </div>
-            </div>
-          )
-        })
-      } -->
-
-				<!-- Inner Sections End -->
-			</div>
-		</div>
-	</section>
+	<!-- Calendar Section -->
+	<BookingCalendar client:load />
 </MainLayout>
-
-<style>
-	/* Hide scrollbar for Chrome, Safari and Opera */
-	.no-scrollbar::-webkit-scrollbar {
-		display: none;
-	}
-
-	/* Hide scrollbar for IE, Edge and Firefox */
-	.no-scrollbar {
-		-ms-overflow-style: none; /* IE and Edge */
-		scrollbar-width: none; /* Firefox */
-	}
-</style>

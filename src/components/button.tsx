@@ -15,11 +15,22 @@ const Button = (props: ButtonProps) => {
 
 	const className = `${defaultStyles} bg-primary-200`;
 
+	// If there is a `to`, render a <Link> or <a>; otherwise, render a <button>
+	if (to) {
+		return (
+			<a href={to} className={className} onClick={onClick} role="button" aria-label={text}>
+				{text}
+				<ArrowPri />
+			</a>
+		);
+	}
+
+	// Otherwise, render a <button>
 	return (
-		<a href={to} className={className} onClick={onClick} role="button" aria-label={text}>
+		<button type={type} className={className} onClick={onClick} aria-label={text}>
 			{text}
 			<ArrowPri />
-		</a>
+		</button>
 	);
 };
 
