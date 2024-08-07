@@ -1,79 +1,87 @@
+import React from 'react';
+import { useContactForm } from '../utils/useContactForm';
 import Button from './button';
 
-const ContactForm = () => {
-	const handleSubmit = (e: any) => {
-		e.preventDefault();
-		const name = e.target.name.value;
-		const email = e.target.email.value;
-		const subject = e.target.subject.value;
-		const phone = e.target.phone.value;
-		const message = e.target.message.value;
-
-		const mailtoLink = `mailto:famarahouse12@gmail.com?subject=${encodeURIComponent(
-			subject
-		)}&body=${encodeURIComponent(
-			`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`
-		)}`;
-
-		window.location.href = mailtoLink;
-	};
+const ContactForm: React.FC = () => {
+	const { handleSubmit } = useContactForm();
 
 	return (
-		<div className="col-span-1 lg:col-span-2">
-			<form
-				className="w-full grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-[50px] px-4 lg:px-0"
-				onSubmit={handleSubmit}
-			>
-				<label htmlFor="name">
+		<form
+			onSubmit={handleSubmit}
+			method="POST"
+			className="pt-[70px] lg:pt-[100px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+		>
+			<div className="space-y-4">
+				<div>
+					<label htmlFor="name" className="block mb-2 font-dm text-lg">
+						Name:
+					</label>
 					<input
 						type="text"
+						id="name"
 						name="name"
-						className="border-b w-full border-black outline-none py-3 text-base lg:text-[22px] lg:leading-[33px] tracking-tight font-jost text-text-gray"
-						placeholder="Name"
 						required
+						className="w-full px-4 py-2 border rounded-lg font-jost"
 					/>
-				</label>
-				<label htmlFor="email">
+				</div>
+				<div>
+					<label htmlFor="email" className="block mb-2 font-dm text-lg">
+						Email:
+					</label>
 					<input
 						type="email"
+						id="email"
 						name="email"
-						className="border-b w-full border-black outline-none py-3 text-base lg:text-[22px] lg:leading-[33px] tracking-tight font-jost text-text-gray"
-						placeholder="Email"
 						required
+						className="w-full px-4 py-2 border rounded-lg font-jost"
 					/>
-				</label>
-				<label htmlFor="subject">
+				</div>
+			</div>
+
+			<div className="space-y-4">
+				<div>
+					<label htmlFor="subject" className="block mb-2 font-dm text-lg">
+						Subject:
+					</label>
 					<input
 						type="text"
+						id="subject"
 						name="subject"
-						className="border-b w-full border-black outline-none py-3 text-base lg:text-[22px] lg:leading-[33px] tracking-tight font-jost text-text-gray"
-						placeholder="Subject"
 						required
+						className="w-full px-4 py-2 border rounded-lg font-jost"
 					/>
-				</label>
-				<label htmlFor="phone">
+				</div>
+				<div>
+					<label htmlFor="phone" className="block mb-2 font-dm text-lg">
+						Phone:
+					</label>
 					<input
-						type="number"
+						type="tel"
+						id="phone"
 						name="phone"
-						className="border-b w-full border-black outline-none py-3 text-base lg:text-[22px] lg:leading-[33px] tracking-tight font-jost text-text-gray"
-						placeholder="Phone"
 						required
+						className="w-full px-4 py-2 border rounded-lg font-jost"
 					/>
+				</div>
+			</div>
+
+			<div className="md:col-span-2 lg:col-span-3">
+				<label htmlFor="message" className="block mb-2 font-dm text-lg">
+					Message:
 				</label>
 				<textarea
+					id="message"
 					name="message"
-					className="col-span-2 border-b w-full border-black outline-none py-3 text-base lg:text-[22px] lg:leading-[33px] tracking-tight font-jost text-text-gray"
-					cols={30}
-					rows={8}
-					placeholder="Hello, I would like to know more about..."
+					rows={5}
 					required
+					className="w-full px-4 py-2 border rounded-lg font-jost"
 				></textarea>
+			</div>
 
-				<div className="w-full flex justify-end col-span-2">
-					<Button text="Send Message" type="submit" />
-				</div>
-			</form>
-		</div>
+			<div className="md:col-span-2 lg:col-span-3">
+				<Button text="Send Message" type="submit" />
+			</div>
+		</form>
 	);
 };
 

@@ -1,4 +1,4 @@
-import { useBookingForm } from '../utils/useBookingform';
+import { useBookingForm } from '../utils/useBookingForm';
 import Button from './button';
 
 const BookingForm: React.FC = () => {

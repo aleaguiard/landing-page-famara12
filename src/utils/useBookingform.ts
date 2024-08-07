@@ -56,7 +56,7 @@ export const useBookingForm = () => {
 		}
 
 		try {
-			const response = await fetch('/api/sendEmail', {
+			const response = await fetch('/api/booking', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
