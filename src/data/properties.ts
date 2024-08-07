@@ -5,7 +5,7 @@ export const properties = [
 			"Entire house with two bedrooms, accommodating up to 4 guests. Fully equipped and modern, it's the perfect place to enjoy quality time with your family.",
 		buttonText: 'Book Now',
 		images: [
-			'/FH1.jpg',
+			'/FH22.jpg',
 			'/FH2.jpg',
 			'/FH3.jpg',
 			'/FH4.jpg',
@@ -24,9 +24,7 @@ export const properties = [
 			'/FH17.jpg',
 			'/FH18.jpg',
 			'/FH21.jpg',
-			'/FH22.jpg',
-			'/FH26.jpg',
-			'/FH27.jpg',
+			'/FH1.jpg',
 		],
 	},
 	{
