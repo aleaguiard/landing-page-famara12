@@ -65,16 +65,14 @@ export const useBookingForm = () => {
 			});
 
 			if (response.ok) {
-				alert(
-					'Solicitud enviada correctamente. Se ha enviado un correo con los detalles de la reserva.'
-				);
+				alert('Request sent successfully. We will contact you soon.');
 				form.reset();
 			} else {
-				alert('Error al enviar la solicitud');
+				alert('Error sending the request. Please try again.');
 			}
 		} catch (error) {
 			console.error('Error:', error);
-			alert('Error al enviar la solicitud');
+			alert('Error');
 		}
 	};
 
