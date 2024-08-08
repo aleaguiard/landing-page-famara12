@@ -13,7 +13,7 @@ const BookingForm: React.FC = () => {
 	return (
 		<form
 			onSubmit={handleSubmit}
-			className="pt-[70px] lg:pt-[100px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+			className="pt-[32px] lg:pt-[64px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
 		>
 			<div className="space-y-4">
 				<div>
