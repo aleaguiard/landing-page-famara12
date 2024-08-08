@@ -17,15 +17,15 @@ export const POST: APIRoute = async ({ request }) => {
 	const mailOptions = {
 		from: process.env.EMAIL_USER,
 		to: 'famarahouse12@gmail.com',
-		subject: data.subject || 'New Contact Message',
+		subject: 'New Contact Message',
 		html: `
-            <h1>New Contact Message</h1>
-            <p><strong>Name:</strong> ${data.name}</p>
-            <p><strong>Email:</strong> ${data.email}</p>
-            <p><strong>Subject:</strong> ${data.subject}</p>
-            <p><strong>Phone:</strong> ${data.phone}</p>
-            <p><strong>Message:</strong> ${data.message}</p>
-        `,
+      <h1>New Contact Message</h1>
+      <p><strong>Name:</strong> ${data.name}</p>
+      <p><strong>Email:</strong> ${data.email}</p>
+      <p><strong>Phone:</strong> ${data.phone}</p>
+      <p><strong>Subject:</strong> ${data.subject}</p>
+      <p><strong>Message:</strong> ${data.message}</p>
+    `,
 	};
 
 	try {

@@ -3,15 +3,26 @@ import { useContactForm } from '../utils/useContactForm';
 import Button from './button';
 
 const ContactForm: React.FC = () => {
-	const { handleSubmit } = useContactForm();
+	const {
+		handleSubmit,
+		name,
+		setName,
+		email,
+		setEmail,
+		phone,
+		setPhone,
+		subject,
+		setSubject,
+		message,
+		setMessage,
+	} = useContactForm();
 
 	return (
 		<form
 			onSubmit={handleSubmit}
-			method="POST"
-			className="pt-[70px] lg:pt-[100px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+			className="pt-[16px] lg:pt-[100px] w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-8"
 		>
-			<div className="space-y-4">
+			<div className="space-y-4 w-full">
 				<div>
 					<label htmlFor="name" className="block mb-2 font-dm text-lg">
 						Name:
@@ -20,8 +31,10 @@ const ContactForm: React.FC = () => {
 						type="text"
 						id="name"
 						name="name"
+						value={name}
+						onChange={(e) => setName(e.target.value)}
 						required
-						className="w-full px-4 py-2 border rounded-lg font-jost"
+						className="w-full px-4 py-2 border-b-2 border-gray-300 focus:border-black outline-none font-jost"
 					/>
 				</div>
 				<div>
@@ -32,13 +45,15 @@ const ContactForm: React.FC = () => {
 						type="email"
 						id="email"
 						name="email"
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
 						required
-						className="w-full px-4 py-2 border rounded-lg font-jost"
+						className="w-full px-4 py-2 border-b-2 border-gray-300 focus:border-black outline-none font-jost"
 					/>
 				</div>
 			</div>
 
-			<div className="space-y-4">
+			<div className="space-y-4 w-full">
 				<div>
 					<label htmlFor="subject" className="block mb-2 font-dm text-lg">
 						Subject:
@@ -47,8 +62,10 @@ const ContactForm: React.FC = () => {
 						type="text"
 						id="subject"
 						name="subject"
+						value={subject}
+						onChange={(e) => setSubject(e.target.value)}
 						required
-						className="w-full px-4 py-2 border rounded-lg font-jost"
+						className="w-full px-4 py-2 border-b-2 border-gray-300 focus:border-black outline-none font-jost"
 					/>
 				</div>
 				<div>
@@ -59,13 +76,15 @@ const ContactForm: React.FC = () => {
 						type="tel"
 						id="phone"
 						name="phone"
+						value={phone}
+						onChange={(e) => setPhone(e.target.value)}
 						required
-						className="w-full px-4 py-2 border rounded-lg font-jost"
+						className="w-full px-4 py-2 border-b-2 border-gray-300 focus:border-black outline-none font-jost"
 					/>
 				</div>
 			</div>
 
-			<div className="md:col-span-2 lg:col-span-3">
+			<div className="md:col-span-2 w-full">
 				<label htmlFor="message" className="block mb-2 font-dm text-lg">
 					Message:
 				</label>
@@ -73,12 +92,14 @@ const ContactForm: React.FC = () => {
 					id="message"
 					name="message"
 					rows={5}
+					value={message}
+					onChange={(e) => setMessage(e.target.value)}
 					required
-					className="w-full px-4 py-2 border rounded-lg font-jost"
+					className="w-full px-4 py-2 border-b-2 border-gray-300 focus:border-black outline-none font-jost"
 				></textarea>
 			</div>
 
-			<div className="md:col-span-2 lg:col-span-3">
+			<div className="md:col-span-2 w-full">
 				<Button text="Send Message" type="submit" />
 			</div>
 		</form>
