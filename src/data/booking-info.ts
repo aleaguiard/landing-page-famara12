@@ -1,11 +1,11 @@
 export const bookingInfo = [
 	{
 		title: 'Loft 12 Pricing',
-		text: 'Price per night for Loft 12: $150.',
+		text: 'Price per night: 110€.',
 	},
 	{
 		title: 'House 12 Pricing',
-		text: 'Price per night for House 12: $200.',
+		text: 'Price per night: 120€.',
 	},
 	{
 		title: 'Welcome Basket',
@@ -13,7 +13,7 @@ export const bookingInfo = [
 	},
 	{
 		title: 'Extra Guest Fee',
-		text: 'Additional guests are welcome for an extra fee of $30 per night.',
+		text: 'Additional guests are welcome for an extra fee of 15€.',
 	},
 	{
 		title: 'Crib Availability',
