@@ -67,16 +67,16 @@ const ContactForm: React.FC = () => {
 					value={message}
 					onChange={(e) => setMessage(e.target.value)}
 					required
-					className="w-full px-4 py-2 border-b-2 border-gray-300 focus:border-black outline-none font-jost placeholder-transparent resize-none bg-transparent"
+					className="w-full px-4 py-2 border-b-2 border-gray-300 focus:border-black outline-none font-jost placeholder-transparent"
 					placeholder=" "
 				></textarea>
 				<label
 					htmlFor="message"
 					className={`absolute left-4 transition-all duration-200 ${
-						message ? 'top-[-10px] text-xs' : 'top-2 text-lg'
+						message ? 'top-[-15px] text-xs' : 'top-2 text-lg'
 					}`}
 				>
-					Message:
+					Message
 				</label>
 			</div>
 
