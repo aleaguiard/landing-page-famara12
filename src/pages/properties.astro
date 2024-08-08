@@ -77,9 +77,10 @@ import { properties } from '../data/properties';
 		document.addEventListener('DOMContentLoaded', () => {
 			const carousels = document.querySelectorAll('.carousel');
 			carousels.forEach((carousel, index) => {
-				const images = carousel.children;
-				let currentIndex = 0;
+				const images = Array.from(carousel.children) as HTMLImageElement[];
+				preloadImages(images);
 
+				let currentIndex = 0;
 				const nextButton = document.getElementById(`next-${index}`);
 				const prevButton = document.getElementById(`prev-${index}`);
 
@@ -97,6 +98,13 @@ import { properties } from '../data/properties';
 					});
 				}
 			});
+
+			function preloadImages(images: HTMLImageElement[]) {
+				images.forEach((image) => {
+					const img = new Image();
+					img.src = image.src;
+				});
+			}
 
 			function updateCarousel(carousel: any, currentIndex: number) {
 				const offset = -currentIndex * 100;
