@@ -6,6 +6,7 @@ import MainLayout from '../../layouts/main-layout.astro';
 import { getLangFromUrl, useTranslatedPath } from '../../i18n/utils';
 import { ui } from '../../i18n/ui';
 import { Image } from 'astro:assets';
+import MainLogo from '../../icons/main-logo';
 
 const lang = getLangFromUrl(Astro.url) as string;
 const translatePath = useTranslatedPath(lang);
@@ -14,19 +15,12 @@ const translatePath = useTranslatedPath(lang);
 <MainLayout title={`${ui[lang].nav.title}`}>
 	<!-- Banner -->
 	<section
-		class="w-full bg-index bg-no-repeat bg-cover h-[screen] lg:min-h-[110vh] px-12 xl:px-0 flex items-center bg-cover bg-no-repeat"
+		class="w-full bg-index bg-no-repeat bg-cover h-screen sm:h-[75vh] lg:min-h-[110vh] px-12 xl:px-0 flex items-center"
 	>
-		<div class="lg:max-w-[1200px] w-full mx-auto flex flex-col py-8">
-			<h1
-				class="text-[30px] leading-[40px] md:text-[40px] xl:text-[60px] pb-4 font-dm md:leading-[60px] w-full xl:max-w-[55%] text-primary-400"
-			>
-				{ui[lang].nav.title}
-			</h1>
-			<p
-				class="text-base md:text-[20px] pb-5 font-jost text-text-white w-full lg:max-w-[50%]"
-			>
-				{ui[lang].index.info}
-			</p>
+		<div
+			class="lg:max-w-[1200px] w-full mx-auto flex flex-col items-center justify-center py-8"
+		>
+			<MainLogo width="200px" height="250px" />
 			<Button text={ui[lang].button.bookNow} to={translatePath('/booking')} />
 		</div>
 	</section>
@@ -39,7 +33,6 @@ const translatePath = useTranslatedPath(lang);
 			{ui[lang].index.servicesTitle}
 		</h2>
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 lg:gap-y-10 mt-4">
-			<!-- Ajuste aquí -->
 			{
 				services.map((service) => {
 					return (
