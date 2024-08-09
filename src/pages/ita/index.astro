@@ -5,6 +5,7 @@ import { services } from '../../data/ita/services';
 import MainLayout from '../../layouts/main-layout.astro';
 import { getLangFromUrl, useTranslatedPath } from '../../i18n/utils';
 import { ui } from '../../i18n/ui';
+import { Image } from 'astro:assets';
 
 const lang = getLangFromUrl(Astro.url) as string;
 const translatePath = useTranslatedPath(lang);
@@ -43,12 +44,7 @@ const translatePath = useTranslatedPath(lang);
 				services.map((service) => {
 					return (
 						<div class="w-full col-span-1 max-w-[250px] mx-auto flex rounded-[15px] hover:bg-primary-300 px-3 py-[40px] flex-col justify-center items-center gap-2 md:gap-3 shadow-sm">
-							<img
-								src={service.icon}
-								alt={service.title}
-								class="mb-2"
-								style={{ width: '40px', height: '40px' }}
-							/>
+							<Image src={service.icon} alt={service.title} width={40} height={40} />
 							<h3 class="text-text-blue font-dm text-[20px] md:text-[22px] leading-loose text-center">
 								{service.title}
 							</h3>
