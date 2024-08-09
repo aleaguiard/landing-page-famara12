@@ -1,0 +1,59 @@
+---
+import MainLayout from '../../layouts/main-layout.astro';
+import ContactForm from '../../components/contact-form';
+import { getLangFromUrl, useTranslatedPath } from '../../i18n/utils';
+import { ui } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url) as string;
+const translatePath = useTranslatedPath(lang);
+---
+
+<MainLayout title=`${ui[lang].nav.title} - ${ui[lang].nav.contact}` }>
+	<!-- Banner Section -->
+	<section
+		class="w-full bg-contact h-[50vh] flex justify-center items-end bg-center bg-cover bg-no-repeat"
+	>
+		<div
+			class="py-[20px] lg:py-[30px] px-[40px] lg:px-[100px] flex flex-col justify-center items-center bg-white rounded-tl-[37px] rounded-tr-[37px] gap-2"
+		>
+			<h1
+				class="text-[25px] leading-[35px] lg:text-[40px] lg:leading-[52px] font-dm capitalize text-primary-200"
+			>
+				{ui[lang].nav.contact}
+			</h1>
+			<p
+				class="text-sm lg:text-[18px] lg:leading-[25px] tracking-tight font-jost text-text-gray"
+			>
+				<a href={translatePath('/')}>{ui[lang].nav.home}</a> / {ui[lang].nav.contact}
+			</p>
+		</div>
+	</section>
+
+	<!-- Intro Section -->
+	<section
+		class="lg:max-w-[1200px] flex flex-col gap-8 lg:gap-10 px-12 xl:px-0 w-full mx-auto pt-[40px] lg:pt-[80px]"
+	>
+		<h2
+			class="text-[30px] text-center capitalize font-dm tracking-wide lg:max-w-[60%] leading-8 md:leading-[62.50px] md:text-[50px] mx-auto text-text-blue"
+		>
+			{ui[lang].contactForm.info}
+		</h2>
+
+		<!-- main section -->
+		<div class="gap-[55px] place-content-center px-4">
+			<ContactForm lang={lang} client:load />
+		</div>
+	</section>
+
+	<!-- Footer Section -->
+</MainLayout>
+
+<style>
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+</style>

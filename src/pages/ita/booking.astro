@@ -1,10 +1,15 @@
 ---
-import BookingCalendar from '../components/booking-calendar';
-import { bookingInfo } from '../data/booking-info';
-import MainLayout from '../layouts/main-layout.astro';
+import BookingCalendar from '../../components/booking-calendar';
+import { bookingInfo } from '../../data/ita/booking-info';
+import MainLayout from '../../layouts/main-layout.astro';
+import { getLangFromUrl, useTranslatedPath } from '../../i18n/utils';
+import { ui } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url) as string;
+const translatePath = useTranslatedPath(lang);
 ---
 
-<MainLayout title="Famara 12 - Booking">
+<MainLayout title=`${ui[lang].nav.title} - ${ui[lang].nav.booking}`>
 	<!-- Banner Section -->
 
 	<section
@@ -16,12 +21,12 @@ import MainLayout from '../layouts/main-layout.astro';
 			<h1
 				class="text-[25px] leading-[35px] lg:text-[40px] lg:leading-[52px] font-dm capitalize text-primary-200"
 			>
-				Booking
+				{ui[lang].nav.booking}
 			</h1>
 			<p
 				class="text-sm lg:text-[18px] lg:leading-[25px] tracking-tight font-jost text-text-gray"
 			>
-				<a href="/">Home</a> / Booking
+				<a href={translatePath('/')}>{ui[lang].nav.home}</a> / {ui[lang].nav.booking}
 			</p>
 		</div>
 	</section>
@@ -48,5 +53,5 @@ import MainLayout from '../layouts/main-layout.astro';
 	</section>
 
 	<!-- Calendar Section -->
-	<BookingCalendar client:load />
+	<BookingCalendar lang={lang} client:load />
 </MainLayout>

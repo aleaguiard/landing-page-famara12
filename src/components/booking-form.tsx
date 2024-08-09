@@ -1,7 +1,12 @@
+import { ui } from '../i18n/ui';
 import { useBookingForm } from '../utils/useBookingForm';
 import Button from './button';
 
-const BookingForm: React.FC = () => {
+interface BookingFormProps {
+	lang: string;
+}
+
+const BookingForm: React.FC<BookingFormProps> = ({ lang = 'en' }) => {
 	const {
 		maxGuests,
 		handleAccommodationTypeChange,
@@ -18,7 +23,7 @@ const BookingForm: React.FC = () => {
 			<div className="space-y-4">
 				<div>
 					<label htmlFor="startDate" className="block mb-2 font-dm text-lg">
-						Check-in Date:
+						{ui[lang].booking.checkInDate}
 					</label>
 					<input
 						type="date"
@@ -31,7 +36,7 @@ const BookingForm: React.FC = () => {
 				</div>
 				<div>
 					<label htmlFor="endDate" className="block mb-2 font-dm text-lg">
-						Check-out Date:
+						{ui[lang].booking.checkOutDate}
 					</label>
 					<input
 						type="date"
@@ -47,7 +52,7 @@ const BookingForm: React.FC = () => {
 			<div className="space-y-4">
 				<div>
 					<label htmlFor="accommodationType" className="block mb-2 font-dm text-lg">
-						Accommodation Type:
+						{ui[lang].booking.accommodationType}
 					</label>
 					<select
 						id="accommodationType"
@@ -56,14 +61,14 @@ const BookingForm: React.FC = () => {
 						className="w-full px-4 py-2 border rounded-lg font-jost"
 						onChange={handleAccommodationTypeChange}
 					>
-						<option value="">Select an option</option>
+						<option value="">{ui[lang].booking.selectOption}</option>
 						<option value="House 12">House 12</option>
 						<option value="Loft 12">Loft 12</option>
 					</select>
 				</div>
 				<div>
 					<label htmlFor="guestsNumber" className="block mb-2 font-dm text-lg">
-						Number of Guests:
+						{ui[lang].booking.numberOfGuests}
 					</label>
 					<input
 						type="number"
@@ -80,7 +85,7 @@ const BookingForm: React.FC = () => {
 			<div className="space-y-4">
 				<div>
 					<label htmlFor="checkInTime" className="block mb-2 font-dm text-lg">
-						Check-in Time:
+						{ui[lang].booking.checkInTime}
 					</label>
 					<input
 						type="time"
@@ -94,7 +99,7 @@ const BookingForm: React.FC = () => {
 				</div>
 				<div>
 					<label htmlFor="email" className="block mb-2 font-dm text-lg">
-						Email:
+						{ui[lang].booking.email}
 					</label>
 					<input
 						type="email"
@@ -108,7 +113,7 @@ const BookingForm: React.FC = () => {
 
 			<div className="md:col-span-2 lg:col-span-3">
 				<label htmlFor="specialRequests" className="block mb-2 font-dm text-lg">
-					Special Requests:
+					{ui[lang].booking.specialRequests}
 				</label>
 				<textarea
 					id="specialRequests"
@@ -119,7 +124,7 @@ const BookingForm: React.FC = () => {
 			</div>
 
 			<div className="md:col-span-2 lg:col-span-3">
-				<Button text="Send Request" type="submit" />
+				<Button text={ui[lang].booking.sendRequest} type="submit" />
 			</div>
 		</form>
 	);

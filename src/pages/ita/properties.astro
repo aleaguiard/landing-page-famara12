@@ -1,10 +1,15 @@
 ---
-import Button from '../components/button';
-import MainLayout from '../layouts/main-layout.astro';
-import { properties } from '../data/properties';
+import Button from '../../components/button';
+import MainLayout from '../../layouts/main-layout.astro';
+import { properties } from '../../data/ita/properties';
+import { getLangFromUrl, useTranslatedPath } from '../../i18n/utils';
+import { ui } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url) as string;
+const translatePath = useTranslatedPath(lang);
 ---
 
-<MainLayout title="Famara 12 - Properties">
+<MainLayout title=`${ui[lang].nav.title} - ${ui[lang].nav.properties}`>
 	<!-- Banner Section -->
 	<section
 		class="w-full bg-properties h-[50vh] flex justify-center items-end bg-center bg-cover bg-no-repeat"
@@ -15,12 +20,12 @@ import { properties } from '../data/properties';
 			<h1
 				class="text-[25px] leading-[35px] lg:text-[40px] lg:leading-[52px] font-dm capitalize text-primary-200"
 			>
-				Properties
+				{ui[lang].nav.properties}
 			</h1>
 			<p
 				class="text-sm lg:text-[18px] lg:leading-[25px] tracking-tight font-jost text-text-gray"
 			>
-				<a href="/">Home</a> / Properties
+				<a href={translatePath('/')}>{ui[lang].nav.home}</a> / {ui[lang].nav.properties}
 			</p>
 		</div>
 	</section>
@@ -38,7 +43,7 @@ import { properties } from '../data/properties';
 							{property.description}
 						</p>
 						<div class="flex justify-center">
-							<Button text={property.buttonText} to="/booking" />
+							<Button text={ui[lang].button.bookNow} to={translatePath('/booking')} />
 						</div>
 					</div>
 

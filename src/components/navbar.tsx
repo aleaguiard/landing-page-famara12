@@ -2,8 +2,16 @@ import { useState } from 'react';
 import Logo from '../icons/logo';
 import { motion } from 'framer-motion';
 import useMediaQuery from '../utils/useMediaQuery';
+import { ui } from '../i18n/ui';
+import LanguagePicker from './language-picker';
+import { useTranslatedPath } from '../i18n/utils';
 
-const Navbar = () => {
+interface NavComponentProps {
+	lang: keyof typeof ui;
+}
+
+const Navbar = ({ lang = 'en' }: NavComponentProps) => {
+	const translatePath = useTranslatedPath(lang);
 	const [toggled, setToggled] = useState(false);
 	const matches = useMediaQuery('(min-width: 1280px)');
 
@@ -15,18 +23,19 @@ const Navbar = () => {
 			{/* Nav List for Desktop */}
 			{matches && (
 				<nav className="flex flex-row gap-6">
-					<a href="/" className={linkStyle}>
-						Home
+					<a href={translatePath('/')} className={linkStyle}>
+						{ui[lang].nav.home}
 					</a>
-					<a href="/properties" className={linkStyle}>
-						Properties
+					<a href={translatePath('/properties')} className={linkStyle}>
+						{ui[lang].nav.properties}
 					</a>
-					<a href="/booking" className={linkStyle}>
-						Booking
+					<a href={translatePath('/booking')} className={linkStyle}>
+						{ui[lang].nav.booking}
 					</a>
-					<a href="/contact" className={linkStyle}>
-						Contact
+					<a href={translatePath('/contact')} className={linkStyle}>
+						{ui[lang].nav.contact}
 					</a>
+					<LanguagePicker />
 				</nav>
 			)}
 			{!matches && (
@@ -55,18 +64,19 @@ const Navbar = () => {
 					animate={{ opacity: 1, x: 0 }}
 					className="flex flex-col fixed h-screen bg-white w-[75%] md:w-[90%] text-black bottom-0 left-0 gap-6 items-center justify-center"
 				>
-					<a href="/" className={linkStyle}>
-						Home
+					<a href={`/${lang}`} className={linkStyle}>
+						{ui[lang].nav.home}
 					</a>
-					<a href="/properties" className={linkStyle}>
-						Properties
+					<a href={`/${lang}/properties`} className={linkStyle}>
+						{ui[lang].nav.properties}
 					</a>
-					<a href="/booking" className={linkStyle}>
-						Booking
+					<a href={`/${lang}/booking`} className={linkStyle}>
+						{ui[lang].nav.booking}
 					</a>
-					<a href="/contact" className={linkStyle}>
-						Contact Us
+					<a href={`/${lang}/contact`} className={linkStyle}>
+						{ui[lang].nav.contact}
 					</a>
+					<LanguagePicker />
 				</motion.nav>
 			)}
 		</div>

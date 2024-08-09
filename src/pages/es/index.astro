@@ -1,11 +1,16 @@
 ---
-import Button from '../components/button';
-import { reviews } from '../data/reviews';
-import { services } from '../data/services';
-import MainLayout from '../layouts/main-layout.astro';
+import Button from '../../components/button';
+import { reviews } from '../../data/es/reviews';
+import { services } from '../../data/es/services';
+import MainLayout from '../../layouts/main-layout.astro';
+import { getLangFromUrl, useTranslatedPath } from '../../i18n/utils';
+import { ui } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url) as string;
+const translatePath = useTranslatedPath(lang);
 ---
 
-<MainLayout title="Famara 12">
+<MainLayout title={`${ui[lang].nav.title}`}>
 	<!-- Banner -->
 	<section
 		class="w-full bg-index bg-no-repeat bg-cover h-[screen] lg:min-h-[110vh] px-12 xl:px-0 flex items-center bg-cover bg-no-repeat"
@@ -14,15 +19,14 @@ import MainLayout from '../layouts/main-layout.astro';
 			<h1
 				class="text-[30px] leading-[40px] md:text-[40px] xl:text-[60px] pb-4 font-dm md:leading-[60px] w-full xl:max-w-[55%] text-primary-400"
 			>
-				Famara 12
+				{ui[lang].nav.title}
 			</h1>
 			<p
 				class="text-base md:text-[20px] pb-5 font-jost text-text-white w-full lg:max-w-[50%]"
 			>
-				Welcome to our beautiful homes. Located in front of Famara Beach, these modern and
-				comfortable properties offer the perfect place to relax and enjoy the sun.
+				{ui[lang].index.info}
 			</p>
-			<Button text="Book Now" to="/booking" />
+			<Button text={ui[lang].button.bookNow} to={translatePath('/booking')} />
 		</div>
 	</section>
 
@@ -31,7 +35,7 @@ import MainLayout from '../layouts/main-layout.astro';
 		<h2
 			class="text-[30px] text-center capitalize font-dm tracking-wide lg:max-w-[60%] leading-8 md:leading-[62.50px] md:text-[50px] mx-auto text-text-blue"
 		>
-			Services
+			{ui[lang].index.servicesTitle}
 		</h2>
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 lg:gap-y-10 mt-4">
 			<!-- Ajuste aquí -->
@@ -66,16 +70,12 @@ import MainLayout from '../layouts/main-layout.astro';
 			<h2
 				class="text-[30px] text-center capitalize lg:text-left font-dm tracking-wide leading-8 md:leading-[62.50px] md:text-[50px] text-text-blue"
 			>
-				Famara Beach
+				{ui[lang].index.famaraBeachTitle}
 			</h2>
 			<p
 				class="text-base md:text-[22px] text-center lg:text-left tracking-tight font-jost text-text-gray leading-[33px]"
 			>
-				Located beneath the majestic Risco de Famara on Lanzarote's northwest coast, Famara
-				Beach is a stunning retreat with golden sands and ideal conditions for surfing and
-				wind sports. This serene location offers a peaceful escape, allowing you to unwind
-				and connect with nature. Stay at our rental house in Famara for an unforgettable
-				coastal getaway
+				{ui[lang].index.famaraBeachDescription}
 			</p>
 		</div>
 
@@ -90,7 +90,7 @@ import MainLayout from '../layouts/main-layout.astro';
 			<h2
 				class="font-dm tracking-wide text-center leading-[37px] lg:leading-[62.50px] text-[30px] lg:text-[50px] w-full lg:max-w-[75%] pb-9 mx-auto"
 			>
-				Reviews of our properties
+				{ui[lang].index.reviewsTitle}
 			</h2>
 			<div class="flex flex-col gap-6 lg:gap-8 lg:flex-row justify-between">
 				{
