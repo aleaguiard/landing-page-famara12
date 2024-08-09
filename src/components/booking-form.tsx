@@ -6,7 +6,7 @@ interface BookingFormProps {
 	lang: string;
 }
 
-const BookingForm: React.FC<BookingFormProps> = ({ lang = 'en' }) => {
+const BookingForm: React.FC<BookingFormProps> = ({ lang }) => {
 	const {
 		maxGuests,
 		handleAccommodationTypeChange,

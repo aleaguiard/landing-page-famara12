@@ -8,14 +8,20 @@ import { useTranslatedPath } from '../i18n/utils';
 
 interface NavComponentProps {
 	lang: keyof typeof ui;
+	currentPath: string;
 }
 
-const Navbar = ({ lang = 'en' }: NavComponentProps) => {
+const Navbar = ({ lang, currentPath }: NavComponentProps) => {
 	const translatePath = useTranslatedPath(lang);
 	const [toggled, setToggled] = useState(false);
 	const matches = useMediaQuery('(min-width: 1280px)');
 
-	const linkStyle = 'text-xl leading-6 font-jost text-primary-200';
+	const linkStyle =
+		'text-xl leading-6 font-jost text-primary-200 relative pb-1 transition duration-300 ease-in-out';
+	const hoverStyle =
+		'hover:after:content-[""] hover:after:absolute hover:after:w-full hover:after:h-[2px] hover:after:bg-primary-200 hover:after:left-0 hover:after:bottom-0';
+	const activeLinkStyle =
+		'after:content-[""] after:absolute after:w-full after:h-[2px] after:bg-primary-200 after:left-0 after:bottom-0';
 
 	return (
 		<div className="max-w-[1200px] px-12 xl:px-0 m-auto w-full py-4 flex justify-between items-center">
@@ -23,16 +29,36 @@ const Navbar = ({ lang = 'en' }: NavComponentProps) => {
 			{/* Nav List for Desktop */}
 			{matches && (
 				<nav className="flex flex-row gap-6">
-					<a href={translatePath('/')} className={linkStyle}>
+					<a
+						href={translatePath('/')}
+						className={`${linkStyle} ${hoverStyle} ${
+							currentPath === translatePath('/') ? activeLinkStyle : ''
+						}`} // Aplicar estilo activo
+					>
 						{ui[lang].nav.home}
 					</a>
-					<a href={translatePath('/properties')} className={linkStyle}>
+					<a
+						href={translatePath('/properties')}
+						className={`${linkStyle} ${hoverStyle} ${
+							currentPath === translatePath('/properties') ? activeLinkStyle : ''
+						}`}
+					>
 						{ui[lang].nav.properties}
 					</a>
-					<a href={translatePath('/booking')} className={linkStyle}>
+					<a
+						href={translatePath('/booking')}
+						className={`${linkStyle} ${hoverStyle} ${
+							currentPath === translatePath('/booking') ? activeLinkStyle : ''
+						}`}
+					>
 						{ui[lang].nav.booking}
 					</a>
-					<a href={translatePath('/contact')} className={linkStyle}>
+					<a
+						href={translatePath('/contact')}
+						className={`${linkStyle} ${hoverStyle} ${
+							currentPath === translatePath('/contact') ? activeLinkStyle : ''
+						}`}
+					>
 						{ui[lang].nav.contact}
 					</a>
 					<LanguagePicker />
@@ -64,16 +90,36 @@ const Navbar = ({ lang = 'en' }: NavComponentProps) => {
 					animate={{ opacity: 1, x: 0 }}
 					className="flex flex-col fixed h-screen bg-white w-[75%] md:w-[90%] text-black bottom-0 left-0 gap-6 items-center justify-center"
 				>
-					<a href={`/${lang}`} className={linkStyle}>
+					<a
+						href={`/${lang}`}
+						className={`${linkStyle} ${hoverStyle} ${
+							currentPath === `/${lang}` ? activeLinkStyle : ''
+						}`}
+					>
 						{ui[lang].nav.home}
 					</a>
-					<a href={`/${lang}/properties`} className={linkStyle}>
+					<a
+						href={`/${lang}/properties`}
+						className={`${linkStyle} ${hoverStyle} ${
+							currentPath === `/${lang}/properties` ? activeLinkStyle : ''
+						}`}
+					>
 						{ui[lang].nav.properties}
 					</a>
-					<a href={`/${lang}/booking`} className={linkStyle}>
+					<a
+						href={`/${lang}/booking`}
+						className={`${linkStyle} ${hoverStyle} ${
+							currentPath === `/${lang}/booking` ? activeLinkStyle : ''
+						}`}
+					>
 						{ui[lang].nav.booking}
 					</a>
-					<a href={`/${lang}/contact`} className={linkStyle}>
+					<a
+						href={`/${lang}/contact`}
+						className={`${linkStyle} ${hoverStyle} ${
+							currentPath === `/${lang}/contact` ? activeLinkStyle : ''
+						}`}
+					>
 						{ui[lang].nav.contact}
 					</a>
 					<LanguagePicker />

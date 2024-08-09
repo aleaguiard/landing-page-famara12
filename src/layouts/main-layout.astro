@@ -7,6 +7,8 @@ import { getLangFromUrl } from '../i18n/utils';
 const { title } = Astro.props as LayoutProps;
 
 const lang = getLangFromUrl(Astro.url) as string;
+
+const currentPath = Astro.url.pathname;
 ---
 
 <html lang={lang}>
@@ -28,14 +30,14 @@ const lang = getLangFromUrl(Astro.url) as string;
 	</head>
 	<body>
 		<main class="bg-main bg-no-repeat bg-cover bg-center">
-			<Navbar client:load lang={lang} />
+			<Navbar client:load lang={lang} currentPath={currentPath} />
 			<slot />
 			<Footer lang={lang} />
 		</main>
 		<p
 			class="tracking-tight text-base text-center border border-gray-300 bg-white py-10 lg:text-[22px] lg:leading-[33px] font-jost text-text-gray"
 		>
-			Copyright © Famara House 12
+			Copyright © Famara 12
 		</p>
 	</body>
 </html>

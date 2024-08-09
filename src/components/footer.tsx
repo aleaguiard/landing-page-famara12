@@ -1,11 +1,12 @@
 import { ui, defaultLang } from '../i18n/ui';
 import Logo from '../icons/logo';
+import LanguagePicker from './language-picker';
 
 interface FooterProps {
 	lang: keyof typeof ui;
 }
 
-const Footer = ({ lang = defaultLang }: FooterProps) => {
+const Footer = ({ lang }: FooterProps) => {
 	const currentLang = lang in ui ? lang : defaultLang;
 
 	return (
@@ -62,6 +63,9 @@ const Footer = ({ lang = defaultLang }: FooterProps) => {
 							</p>
 						</div>
 					</div>
+				</div>
+				<div className="flex justify-center mt-6">
+					<LanguagePicker />
 				</div>
 			</div>
 		</footer>

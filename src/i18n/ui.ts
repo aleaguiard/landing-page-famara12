@@ -3,8 +3,8 @@ import spanishTranslations from '../data/es/ui';
 import italianTranslations from '../data/ita/ui';
 
 export const languages = {
-	en: 'English',
 	es: 'Español',
+	en: 'English',
 	ita: 'Italiano',
 };
 

@@ -6,7 +6,7 @@ interface BookingCalendarProps {
 	lang: string;
 }
 
-const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang = 'en' }) => {
+const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
 	return (
 		<section className="px-8 xl:px-0 w-full mt-[40px] lg:mt-[40px] ">
 			<div className="w-full lg:max-w-[1200px] p-12 mx-auto lg:px-[116px] lg:py-[40px] bg-primary-300 rounded-[70px]">
