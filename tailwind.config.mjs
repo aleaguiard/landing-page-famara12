@@ -7,7 +7,7 @@ module.exports = {
 	theme: {
 		extend: {
 			backgroundImage: {
-				index: "url('/MainBG.jpeg')",
+				index: 'url("/MainBG2.jpg")',
 				properties: "url('/BG2.jpg')",
 				booking: "url('/BG3.jpg')",
 				contact: "url('/BG5.jpg')",

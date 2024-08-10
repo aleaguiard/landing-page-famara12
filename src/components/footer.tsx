@@ -14,7 +14,7 @@ const Footer = ({ lang }: FooterProps) => {
 			<div className="w-full max-w-[1200px] px-12 xl:px-0 mx-auto pb-[80px]">
 				<div className="flex justify-center mb-8">
 					<a href={`/${currentLang}`} className="">
-						<Logo />
+						<Logo width="60px" height="60px" />
 					</a>
 				</div>
 
