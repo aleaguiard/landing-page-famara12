@@ -93,11 +93,23 @@ const Navbar = ({ lang, currentPath }: NavComponentProps) => {
 						>
 							<motion.span
 								animate={{ rotateZ: toggled ? 45 : 0, y: toggled ? 8 : 0 }}
-								className="block h-0.5 w-8 bg-white shadow-md"
+								className={`block h-0.5 w-8 ${
+									toggled
+										? 'bg-gray-500'
+										: isHomePage
+										? 'bg-white'
+										: 'bg-gray-500'
+								} shadow-md`}
 							></motion.span>
 							<motion.span
 								animate={{ width: toggled ? 0 : 24 }}
-								className="block h-0.5 w-6 bg-white shadow-md"
+								className={`block h-0.5 w-6 ${
+									toggled
+										? 'bg-gray-500'
+										: isHomePage
+										? 'bg-white'
+										: 'bg-gray-500'
+								} shadow-md`}
 							></motion.span>
 							<motion.span
 								animate={{
@@ -105,7 +117,13 @@ const Navbar = ({ lang, currentPath }: NavComponentProps) => {
 									y: toggled ? -8 : 0,
 									width: toggled ? 32 : 16,
 								}}
-								className="block h-0.5 w-4 bg-white shadow-md"
+								className={`block h-0.5 w-4 ${
+									toggled
+										? 'bg-gray-500'
+										: isHomePage
+										? 'bg-white'
+										: 'bg-gray-500'
+								} shadow-md`}
 							></motion.span>
 						</div>
 					)}
