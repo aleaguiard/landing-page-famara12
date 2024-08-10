@@ -29,125 +29,129 @@ const Navbar = ({ lang, currentPath }: NavComponentProps) => {
 	const bgStyle = isHomePage ? 'bg-transparent' : 'bg-white bg-opacity-75 shadow-lg';
 
 	return (
-		<div className={`fixed top-5 left-0 w-full z-40 ${bgStyle}`}>
-			<div className="max-w-[1200px] px-10 xl:px-0 m-auto w-full py-1 flex items-center">
-				{!isHomePage && (
-					<a href={translatePath('/').replace(/\/$/, '')}>
-						<Logo />
-					</a>
-				)}
+		<div className={`fixed top-0 left-0 w-full z-40 bg-white`}>
+			<div
+				className={`fixed ${isHomePage ? 'top-5' : 'top-0'} left-0 w-full z-40 ${bgStyle}`}
+			>
+				<div className="max-w-[1200px] px-10 xl:px-0 m-auto w-full py-1 flex items-center">
+					{!isHomePage && (
+						<a href={translatePath('/').replace(/\/$/, '')}>
+							<Logo />
+						</a>
+					)}
 
-				{matches && !isHomePage && (
-					<nav className="flex flex-row gap-6 ml-auto">
-						<a
-							href={translatePath('/').replace(/\/$/, '')}
-							className={`${linkStyle} ${hoverStyle} ${
-								currentPath === translatePath('/').replace(/\/$/, '')
-									? activeLinkStyle
-									: ''
-							}`}
-						>
-							{ui[lang].nav.home}
-						</a>
-						<a
-							href={translatePath('/properties').replace(/\/$/, '')}
-							className={`${linkStyle} ${hoverStyle} ${
-								currentPath === translatePath('/properties').replace(/\/$/, '')
-									? activeLinkStyle
-									: ''
-							}`}
-						>
-							{ui[lang].nav.properties}
-						</a>
-						<a
-							href={translatePath('/booking').replace(/\/$/, '')}
-							className={`${linkStyle} ${hoverStyle} ${
-								currentPath === translatePath('/booking').replace(/\/$/, '')
-									? activeLinkStyle
-									: ''
-							}`}
-						>
-							{ui[lang].nav.booking}
-						</a>
-						<a
-							href={translatePath('/contact').replace(/\/$/, '')}
-							className={`${linkStyle} ${hoverStyle} ${
-								currentPath === translatePath('/contact').replace(/\/$/, '')
-									? activeLinkStyle
-									: ''
-							}`}
-						>
-							{ui[lang].nav.contact}
-						</a>
-						<LanguagePicker />
-					</nav>
-				)}
+					{matches && !isHomePage && (
+						<nav className="flex flex-row gap-6 ml-auto">
+							<a
+								href={translatePath('/').replace(/\/$/, '')}
+								className={`${linkStyle} ${hoverStyle} ${
+									currentPath === translatePath('/').replace(/\/$/, '')
+										? activeLinkStyle
+										: ''
+								}`}
+							>
+								{ui[lang].nav.home}
+							</a>
+							<a
+								href={translatePath('/properties').replace(/\/$/, '')}
+								className={`${linkStyle} ${hoverStyle} ${
+									currentPath === translatePath('/properties').replace(/\/$/, '')
+										? activeLinkStyle
+										: ''
+								}`}
+							>
+								{ui[lang].nav.properties}
+							</a>
+							<a
+								href={translatePath('/booking').replace(/\/$/, '')}
+								className={`${linkStyle} ${hoverStyle} ${
+									currentPath === translatePath('/booking').replace(/\/$/, '')
+										? activeLinkStyle
+										: ''
+								}`}
+							>
+								{ui[lang].nav.booking}
+							</a>
+							<a
+								href={translatePath('/contact').replace(/\/$/, '')}
+								className={`${linkStyle} ${hoverStyle} ${
+									currentPath === translatePath('/contact').replace(/\/$/, '')
+										? activeLinkStyle
+										: ''
+								}`}
+							>
+								{ui[lang].nav.contact}
+							</a>
+							<LanguagePicker />
+						</nav>
+					)}
 
-				{(!matches || isHomePage) && (
-					<div
-						onClick={() => setToggled(!toggled)}
-						className="space-y-1 cursor-pointer ml-auto z-50"
-					>
-						<motion.span
-							animate={{ rotateZ: toggled ? 45 : 0, y: toggled ? 8 : 0 }}
-							className="block h-0.5 w-8 bg-white shadow-md"
-						></motion.span>
-						<motion.span
-							animate={{ width: toggled ? 0 : 24 }}
-							className="block h-0.5 w-6 bg-white shadow-md"
-						></motion.span>
-						<motion.span
-							animate={{
-								rotateZ: toggled ? -45 : 0,
-								y: toggled ? -8 : 0,
-								width: toggled ? 32 : 16,
-							}}
-							className="block h-0.5 w-4 bg-white shadow-md"
-						></motion.span>
-					</div>
-				)}
+					{(!matches || isHomePage) && (
+						<div
+							onClick={() => setToggled(!toggled)}
+							className="space-y-1 cursor-pointer ml-auto z-50"
+						>
+							<motion.span
+								animate={{ rotateZ: toggled ? 45 : 0, y: toggled ? 8 : 0 }}
+								className="block h-0.5 w-8 bg-white shadow-md"
+							></motion.span>
+							<motion.span
+								animate={{ width: toggled ? 0 : 24 }}
+								className="block h-0.5 w-6 bg-white shadow-md"
+							></motion.span>
+							<motion.span
+								animate={{
+									rotateZ: toggled ? -45 : 0,
+									y: toggled ? -8 : 0,
+									width: toggled ? 32 : 16,
+								}}
+								className="block h-0.5 w-4 bg-white shadow-md"
+							></motion.span>
+						</div>
+					)}
 
-				{toggled && (!matches || isHomePage) && (
-					<motion.nav
-						initial={{ opacity: 0, x: 25 }}
-						animate={{ opacity: 1, x: 0 }}
-						className="flex flex-col fixed h-screen w-screen bg-white text-black top-0 left-0 gap-6 items-center justify-center z-40"
-					>
-						<a
-							href={`/${lang}`}
-							className={`${linkStyle} ${hoverStyle} ${
-								currentPath === `/${lang}` ? activeLinkStyle : ''
-							}`}
+					{toggled && (!matches || isHomePage) && (
+						<motion.nav
+							initial={{ opacity: 0, x: 25 }}
+							animate={{ opacity: 1, x: 0 }}
+							className="flex flex-col fixed h-screen w-screen bg-white text-black top-0 left-0 gap-6 items-center justify-center z-40"
 						>
-							{ui[lang].nav.home}
-						</a>
-						<a
-							href={`/${lang}/properties`}
-							className={`${linkStyle} ${hoverStyle} ${
-								currentPath === `/${lang}/properties` ? activeLinkStyle : ''
-							}`}
-						>
-							{ui[lang].nav.properties}
-						</a>
-						<a
-							href={`/${lang}/booking`}
-							className={`${linkStyle} ${hoverStyle} ${
-								currentPath === `/${lang}/booking` ? activeLinkStyle : ''
-							}`}
-						>
-							{ui[lang].nav.booking}
-						</a>
-						<a
-							href={`/${lang}/contact`}
-							className={`${linkStyle} ${hoverStyle} ${
-								currentPath === `/${lang}/contact` ? activeLinkStyle : ''
-							}`}
-						>
-							{ui[lang].nav.contact}
-						</a>
-						<LanguagePicker />
-					</motion.nav>
-				)}
+							<a
+								href={`/${lang}`}
+								className={`${linkStyle} ${hoverStyle} ${
+									currentPath === `/${lang}` ? activeLinkStyle : ''
+								}`}
+							>
+								{ui[lang].nav.home}
+							</a>
+							<a
+								href={`/${lang}/properties`}
+								className={`${linkStyle} ${hoverStyle} ${
+									currentPath === `/${lang}/properties` ? activeLinkStyle : ''
+								}`}
+							>
+								{ui[lang].nav.properties}
+							</a>
+							<a
+								href={`/${lang}/booking`}
+								className={`${linkStyle} ${hoverStyle} ${
+									currentPath === `/${lang}/booking` ? activeLinkStyle : ''
+								}`}
+							>
+								{ui[lang].nav.booking}
+							</a>
+							<a
+								href={`/${lang}/contact`}
+								className={`${linkStyle} ${hoverStyle} ${
+									currentPath === `/${lang}/contact` ? activeLinkStyle : ''
+								}`}
+							>
+								{ui[lang].nav.contact}
+							</a>
+							<LanguagePicker />
+						</motion.nav>
+					)}
+				</div>
 			</div>
 		</div>
 	);
