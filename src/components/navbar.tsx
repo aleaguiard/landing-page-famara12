@@ -26,11 +26,11 @@ const Navbar = ({ lang, currentPath }: NavComponentProps) => {
 	const activeLinkStyle =
 		'after:content-[""] after:absolute after:w-full after:h-[2px] after:bg-primary-200 after:left-0 after:bottom-0';
 
-	const bgStyle = isHomePage ? 'bg-transparent' : 'bg-white bg-opacity-75';
+	const bgStyle = isHomePage ? 'bg-transparent' : 'bg-white bg-opacity-75 shadow-lg';
 
 	return (
 		<div className={`fixed top-0 left-0 w-full z-40 ${bgStyle}`}>
-			<div className="max-w-[1200px] px-12 xl:px-0 m-auto w-full py-4 flex items-center">
+			<div className="max-w-[1200px] px-10 xl:px-0 m-auto w-full py-1 flex items-center">
 				{!isHomePage && (
 					<a href={translatePath('/').replace(/\/$/, '')}>
 						<Logo />
@@ -90,11 +90,11 @@ const Navbar = ({ lang, currentPath }: NavComponentProps) => {
 					>
 						<motion.span
 							animate={{ rotateZ: toggled ? 45 : 0, y: toggled ? 8 : 0 }}
-							className="block h-0.5 w-8 bg-white"
+							className="block h-0.5 w-8 bg-white shadow-md"
 						></motion.span>
 						<motion.span
 							animate={{ width: toggled ? 0 : 24 }}
-							className="block h-0.5 w-6 bg-white"
+							className="block h-0.5 w-6 bg-white shadow-md"
 						></motion.span>
 						<motion.span
 							animate={{
@@ -102,7 +102,7 @@ const Navbar = ({ lang, currentPath }: NavComponentProps) => {
 								y: toggled ? -8 : 0,
 								width: toggled ? 32 : 16,
 							}}
-							className="block h-0.5 w-4 bg-white"
+							className="block h-0.5 w-4 bg-white shadow-md"
 						></motion.span>
 					</div>
 				)}
