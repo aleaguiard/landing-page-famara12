@@ -1,5 +1,4 @@
 ---
-import Button from '../../components/button';
 import { reviews } from '../../data/es/reviews';
 import { services } from '../../data/es/services';
 import MainLayout from '../../layouts/main-layout.astro';
@@ -7,6 +6,7 @@ import { getLangFromUrl, useTranslatedPath } from '../../i18n/utils';
 import { ui } from '../../i18n/ui';
 import { Image } from 'astro:assets';
 import MainLogo from '../../icons/main-logo';
+import MainButton from '../../components/main-button';
 
 const lang = getLangFromUrl(Astro.url) as string;
 const translatePath = useTranslatedPath(lang);
@@ -20,8 +20,8 @@ const translatePath = useTranslatedPath(lang);
 		<div
 			class="lg:max-w-[1200px] w-full mx-auto flex flex-col items-center justify-center py-8"
 		>
-			<MainLogo width="200px" height="250px" />
-			<Button text={ui[lang].button.bookNow} to={translatePath('/booking')} />
+			<MainLogo width="200px" height="200px" />
+			<MainButton text={ui[lang].button.discoverMore} to={translatePath('/properties')} />
 		</div>
 	</section>
 

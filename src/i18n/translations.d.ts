@@ -48,6 +48,7 @@ interface UiTranslations {
 		};
 		button: {
 			bookNow: string;
+			discoverMore: string;
 		};
 	};
 }

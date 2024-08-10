@@ -50,6 +50,7 @@ const englishTranslations: UiTranslations = {
 		},
 		button: {
 			bookNow: 'Book Now',
+			discoverMore: 'Discover More',
 		},
 	},
 };

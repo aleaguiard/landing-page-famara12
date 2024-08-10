@@ -1,4 +1,4 @@
-const Logo = ({ width = '60px', height = '60px' }) => {
+const Logo = ({ width = '40px', height = '40px' }) => {
 	return <img src="/LogoC.png" alt="Famara 12" style={{ width, height }} />;
 };
 

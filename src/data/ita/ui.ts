@@ -50,6 +50,7 @@ const italianTranslations: UiTranslations = {
 		},
 		button: {
 			bookNow: 'Prenota ora',
+			discoverMore: 'Scopri di più',
 		},
 	},
 };

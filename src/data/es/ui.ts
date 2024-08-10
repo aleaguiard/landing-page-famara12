@@ -50,6 +50,7 @@ const spanishTranslations: UiTranslations = {
 		},
 		button: {
 			bookNow: 'Reservar',
+			discoverMore: 'Descubre más',
 		},
 	},
 };

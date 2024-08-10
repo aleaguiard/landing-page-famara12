@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import useMediaQuery from '../utils/useMediaQuery';
-import { languages, ui } from '../i18n/ui';
+import { ui } from '../i18n/ui';
 import LanguagePicker from './language-picker';
 import { useTranslatedPath } from '../i18n/utils';
 import Logo from '../icons/logo';
@@ -16,7 +16,8 @@ const Navbar = ({ lang, currentPath }: NavComponentProps) => {
 	const [toggled, setToggled] = useState(false);
 	const matches = useMediaQuery('(min-width: 1280px)');
 
-	const isHomePage = currentPath === `/${lang}`;
+	const isHomePage =
+		currentPath === `/${lang}` || currentPath === '/' || currentPath === `/${lang}/`;
 
 	const linkStyle =
 		'text-xl leading-6 font-jost text-primary-200 relative pb-1 transition duration-300 ease-in-out';
@@ -30,7 +31,11 @@ const Navbar = ({ lang, currentPath }: NavComponentProps) => {
 	return (
 		<div className={`fixed top-0 left-0 w-full z-40 ${bgStyle}`}>
 			<div className="max-w-[1200px] px-12 xl:px-0 m-auto w-full py-4 flex items-center">
-				{!isHomePage && <Logo />}
+				{!isHomePage && (
+					<a href={translatePath('/').replace(/\/$/, '')}>
+						<Logo />
+					</a>
+				)}
 
 				{matches && !isHomePage && (
 					<nav className="flex flex-row gap-6 ml-auto">
