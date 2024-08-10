@@ -29,7 +29,7 @@ const Navbar = ({ lang, currentPath }: NavComponentProps) => {
 	const bgStyle = isHomePage ? 'bg-transparent' : 'bg-white bg-opacity-75 shadow-lg';
 
 	return (
-		<div className={`fixed top-0 left-0 w-full z-40 ${bgStyle}`}>
+		<div className={`fixed top-5 left-0 w-full z-40 ${bgStyle}`}>
 			<div className="max-w-[1200px] px-10 xl:px-0 m-auto w-full py-1 flex items-center">
 				{!isHomePage && (
 					<a href={translatePath('/').replace(/\/$/, '')}>
