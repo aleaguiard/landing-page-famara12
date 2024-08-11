@@ -23,6 +23,12 @@ export const useBookingForm = () => {
 	};
 
 	useEffect(() => {
+		const today = new Date();
+		const startDateInput = document.getElementById('startDate') as HTMLInputElement;
+		if (startDateInput) {
+			startDateInput.min = today.toISOString().split('T')[0];
+		}
+
 		if (startDate) {
 			const minEndDate = new Date(startDate);
 			minEndDate.setDate(minEndDate.getDate() + 4);
@@ -39,7 +45,6 @@ export const useBookingForm = () => {
 		const formData = new FormData(form);
 		const data = Object.fromEntries(formData.entries());
 
-		// Validaciones adicionales
 		const startDateObj = new Date(data.startDate as string);
 		const endDateObj = new Date(data.endDate as string);
 		const nightsDifference =

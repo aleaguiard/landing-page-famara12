@@ -94,7 +94,6 @@ const BookingForm: React.FC<BookingFormProps> = ({ lang }) => {
 						required
 						className="w-full px-4 py-2 border rounded-lg font-jost"
 						min="15:00"
-						step="1800"
 					/>
 				</div>
 				<div>
