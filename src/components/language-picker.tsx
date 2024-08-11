@@ -9,7 +9,12 @@ const LanguageSelector = () => (
 						href={`/${lang}`}
 						className="flex items-center gap-2 text-blue-600 hover:underline transition-colors duration-200"
 					>
-						<img src={`/${lang}-icon.svg`} alt={label} className="w-6 h-6" />
+						<img
+							src={`/${lang}-icon.svg`}
+							alt={label}
+							loading="lazy"
+							className="w-6 h-6"
+						/>
 					</a>
 				</li>
 			))}
