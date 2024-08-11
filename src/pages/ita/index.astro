@@ -7,6 +7,7 @@ import { ui } from '../../i18n/ui';
 import { Image } from 'astro:assets';
 import MainLogo from '../../icons/main-logo';
 import MainButton from '../../components/main-button';
+import FamaraView from '../../icons/famara-view.astro';
 
 const lang = getLangFromUrl(Astro.url) as string;
 const translatePath = useTranslatedPath(lang);
@@ -69,9 +70,7 @@ const translatePath = useTranslatedPath(lang);
 			</p>
 		</div>
 
-		<div>
-			<img src="/BG3.jpg" alt="" class="rounded-bl-[48px] rounded-tr-[48px]" />
-		</div>
+		<FamaraView />
 	</section>
 
 	<!-- What People Think About Us Section -->

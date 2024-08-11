@@ -1,3 +1,5 @@
+import type { ui } from '../i18n/ui';
+
 export interface LayoutProps {
 	title: string;
 }
@@ -12,4 +14,9 @@ export interface Property {
 export interface ImageProps {
 	src: string;
 	alt: string;
+}
+
+export interface NavComponentProps {
+	lang: keyof typeof ui;
+	currentPath: string;
 }

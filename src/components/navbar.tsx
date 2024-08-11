@@ -5,11 +5,7 @@ import { ui } from '../i18n/ui';
 import LanguagePicker from './language-picker';
 import { useTranslatedPath } from '../i18n/utils';
 import Logo from '../icons/logo';
-
-interface NavComponentProps {
-	lang: keyof typeof ui;
-	currentPath: string;
-}
+import type { NavComponentProps } from '../utils/types';
 
 const Navbar = ({ lang, currentPath }: NavComponentProps) => {
 	const translatePath = useTranslatedPath(lang);
