@@ -24,3 +24,7 @@ export interface NavComponentProps {
 export interface FooterProps {
 	lang: keyof typeof ui;
 }
+
+export interface LanguageSelectorProps {
+	loading?: 'lazy' | 'eager';
+}

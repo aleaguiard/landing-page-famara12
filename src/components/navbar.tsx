@@ -78,7 +78,7 @@ const Navbar = ({ lang, currentPath }: NavComponentProps) => {
 							>
 								{ui[lang].nav.contact}
 							</a>
-							<LanguagePicker />
+							<LanguagePicker loading="eager" />
 						</nav>
 					)}
 
@@ -162,7 +162,7 @@ const Navbar = ({ lang, currentPath }: NavComponentProps) => {
 							>
 								{ui[lang].nav.contact}
 							</a>
-							<LanguagePicker />
+							<LanguagePicker loading="eager" />
 						</motion.nav>
 					)}
 				</div>

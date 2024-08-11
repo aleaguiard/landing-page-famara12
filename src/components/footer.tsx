@@ -62,7 +62,7 @@ const Footer = ({ lang }: FooterProps) => {
 					</div>
 				</div>
 				<div className="flex justify-center mt-6">
-					<LanguagePicker />
+					<LanguagePicker loading="lazy" />
 				</div>
 			</div>
 		</footer>
