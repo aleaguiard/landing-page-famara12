@@ -4,16 +4,17 @@ import Button from './button';
 
 interface BookingFormProps {
 	lang: string;
+	onAccommodationChange: (value: string) => void;
 }
 
-const BookingForm: React.FC<BookingFormProps> = ({ lang }) => {
+const BookingForm: React.FC<BookingFormProps> = ({ lang, onAccommodationChange }) => {
 	const {
 		maxGuests,
 		handleAccommodationTypeChange,
 		handleStartDateChange,
 		handleEndDateChange,
 		handleSubmit,
-	} = useBookingForm();
+	} = useBookingForm(onAccommodationChange);
 
 	return (
 		<form
@@ -59,7 +60,10 @@ const BookingForm: React.FC<BookingFormProps> = ({ lang }) => {
 						name="accommodationType"
 						required
 						className="w-full px-4 py-2 border rounded-lg font-jost"
-						onChange={handleAccommodationTypeChange}
+						onChange={(e) => {
+							handleAccommodationTypeChange(e);
+							onAccommodationChange(e.target.value);
+						}}
 					>
 						<option value="">{ui[lang].booking.selectOption}</option>
 						<option value="House 12">House 12</option>

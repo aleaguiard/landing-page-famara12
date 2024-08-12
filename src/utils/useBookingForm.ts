@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
-export const useBookingForm = () => {
+export const useBookingForm = (onAccommodationChange: (value: string) => void) => {
 	const [maxGuests, setMaxGuests] = useState(4);
-	const [startDate, setStartDate] = useState('');
-	const [endDate, setEndDate] = useState('');
+	const [startDate, setStartDate] = useState<string>('');
+	const [endDate, setEndDate] = useState<string>('');
 
 	const handleAccommodationTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		const value = event.target.value;
@@ -12,6 +12,7 @@ export const useBookingForm = () => {
 		} else if (value === 'Loft 12') {
 			setMaxGuests(2);
 		}
+		onAccommodationChange(value);
 	};
 
 	const handleStartDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,23 +22,6 @@ export const useBookingForm = () => {
 	const handleEndDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setEndDate(event.target.value);
 	};
-
-	useEffect(() => {
-		const today = new Date();
-		const startDateInput = document.getElementById('startDate') as HTMLInputElement;
-		if (startDateInput) {
-			startDateInput.min = today.toISOString().split('T')[0];
-		}
-
-		if (startDate) {
-			const minEndDate = new Date(startDate);
-			minEndDate.setDate(minEndDate.getDate() + 4);
-			const endDateInput = document.getElementById('endDate') as HTMLInputElement;
-			if (endDateInput) {
-				endDateInput.min = minEndDate.toISOString().split('T')[0];
-			}
-		}
-	}, [startDate]);
 
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -55,8 +39,8 @@ export const useBookingForm = () => {
 			return;
 		}
 
-		if (parseInt(data.guestsNumber as string) > maxGuests) {
-			alert(`El número máximo de huéspedes para ${data.accommodationType} es ${maxGuests}.`);
+		if (parseInt(data.guestCount as string, 10) > maxGuests) {
+			alert(`El máximo de huéspedes es ${maxGuests}`);
 			return;
 		}
 
