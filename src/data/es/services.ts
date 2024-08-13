@@ -6,12 +6,12 @@ export const services = [
 	},
 	{
 		title: 'Terraza Privada',
-		text: 'Relájate en tu terraza privada, equipada con muebles de exterior y vistas panorámicas.',
+		text: 'Relájate en la terraza privada, equipada con muebles de exterior, hamacas y sombrillas.',
 		icon: '/terrace-icon.png',
 	},
 	{
-		title: 'Cocina Equiparada',
-		text: 'Prepara comidas en nuestra cocina totalmente equipada con electrodomésticos y utensilios modernos.',
+		title: 'Cocina Equipada',
+		text: 'Disfruta de la preparación de comidas en una cocina luminosa y totalmente equipada.',
 		icon: '/kitchen-icon.png',
 	},
 	{
@@ -21,12 +21,12 @@ export const services = [
 	},
 	{
 		title: 'Parking',
-		text: 'Ofrecemos un espacio de estacionamiento privado situado  dentro denuestras instalaciones para tu comodidad.',
+		text: 'Ofrecemos un espacio de estacionamiento privado dentro de la propiedad para mayor comodidad.',
 		icon: '/parking-icon.png',
 	},
 	{
 		title: 'Limpieza',
-		text: 'Nuestra propiedad se limpia y desinfecta a fondo para tu comodidad y tranquilidad.',
+		text: 'Nuestras propiedades se limpian y desinfectan a fondo para tu disfrute y bienestar.',
 		icon: '/clean-icon.png',
 	},
 ];

@@ -28,3 +28,20 @@ export interface FooterProps {
 export interface LanguageSelectorProps {
 	loading?: 'lazy' | 'eager';
 }
+
+export interface BookingCalendarProps {
+	lang: string;
+}
+
+export interface Reserva {
+	title: string;
+	start: string;
+	end: string;
+}
+
+export interface BookingFormProps {
+	lang: string;
+	onAccommodationChange: (value: string) => void;
+	checkInDate: Date | null;
+	checkOutDate: Date | null;
+}

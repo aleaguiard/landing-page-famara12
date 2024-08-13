@@ -22,6 +22,7 @@ interface UiTranslations {
 			sendRequest: string;
 			calendarTitle: string;
 			selectDates: string;
+			minimumStay: string;
 			confirmationNote: string;
 		};
 		contactForm: {

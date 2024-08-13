@@ -22,6 +22,7 @@ const englishTranslations: UiTranslations = {
 			sendRequest: 'Send Request',
 			calendarTitle: 'CALENDAR TO BOOK',
 			selectDates: 'Select your dates and preferences',
+			minimumStay: 'Minimum of 4 nights of duration',
 			confirmationNote:
 				'*Please note that the booking will be confirmed once you receive the confirmation email.',
 		},

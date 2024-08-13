@@ -1,16 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export const useBookingForm = (onAccommodationChange: (value: string) => void) => {
-	const [maxGuests, setMaxGuests] = useState(4);
+	const [maxGuests, setMaxGuests] = useState<number | null>(null);
 	const [startDate, setStartDate] = useState<string>('');
 	const [endDate, setEndDate] = useState<string>('');
+	const [accommodationType, setAccommodationType] = useState<string>('');
 
 	const handleAccommodationTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		const value = event.target.value;
+		setAccommodationType(value);
 		if (value === 'House 12') {
 			setMaxGuests(4);
 		} else if (value === 'Loft 12') {
 			setMaxGuests(2);
+		} else {
+			setMaxGuests(null);
 		}
 		onAccommodationChange(value);
 	};
@@ -39,8 +43,13 @@ export const useBookingForm = (onAccommodationChange: (value: string) => void) =
 			return;
 		}
 
-		if (parseInt(data.guestCount as string, 10) > maxGuests) {
-			alert(`El máximo de huéspedes es ${maxGuests}`);
+		const guestCount = parseInt(data.guestsNumber as string, 10);
+		if (maxGuests === null) {
+			alert('Por favor, seleccione un tipo de alojamiento.');
+			return;
+		}
+		if (guestCount > maxGuests) {
+			alert(`El máximo de huéspedes para ${accommodationType} es ${maxGuests}`);
 			return;
 		}
 
@@ -56,6 +65,8 @@ export const useBookingForm = (onAccommodationChange: (value: string) => void) =
 			if (response.ok) {
 				alert('Request sent successfully. We will contact you soon.');
 				form.reset();
+				setAccommodationType('');
+				setMaxGuests(null);
 			} else {
 				alert('Error sending the request. Please try again.');
 			}
@@ -71,5 +82,6 @@ export const useBookingForm = (onAccommodationChange: (value: string) => void) =
 		handleStartDateChange,
 		handleEndDateChange,
 		handleSubmit,
+		accommodationType,
 	};
 };

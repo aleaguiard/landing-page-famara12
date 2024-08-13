@@ -22,6 +22,7 @@ const italianTranslations: UiTranslations = {
 			sendRequest: 'Invia richiesta',
 			calendarTitle: 'CALENDARIO PER PRENOTARE',
 			selectDates: 'Seleziona le tue date e le preferenze',
+			minimumStay: 'Minimo di 4 notti di durata',
 			confirmationNote:
 				'*Si prega di notare che la prenotazione verrà confermata una volta ricevuta la conferma via email.',
 		},

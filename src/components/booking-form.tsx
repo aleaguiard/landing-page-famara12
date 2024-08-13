@@ -1,56 +1,20 @@
 import { ui } from '../i18n/ui';
 import { useBookingForm } from '../utils/useBookingForm';
 import Button from './button';
+import type { BookingFormProps } from '../utils/types';
 
-interface BookingFormProps {
-	lang: string;
-	onAccommodationChange: (value: string) => void;
-}
-
-const BookingForm: React.FC<BookingFormProps> = ({ lang, onAccommodationChange }) => {
-	const {
-		maxGuests,
-		handleAccommodationTypeChange,
-		handleStartDateChange,
-		handleEndDateChange,
-		handleSubmit,
-	} = useBookingForm(onAccommodationChange);
+const BookingForm: React.FC<BookingFormProps> = ({
+	lang,
+	onAccommodationChange,
+	checkInDate,
+	checkOutDate,
+}) => {
+	const { maxGuests, handleAccommodationTypeChange, handleSubmit, accommodationType } =
+		useBookingForm(onAccommodationChange);
 
 	return (
-		<form
-			onSubmit={handleSubmit}
-			className="pt-[32px] lg:pt-[64px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-		>
-			<div className="space-y-4">
-				<div>
-					<label htmlFor="startDate" className="block mb-2 font-dm text-lg">
-						{ui[lang].booking.checkInDate}
-					</label>
-					<input
-						type="date"
-						id="startDate"
-						name="startDate"
-						required
-						className="w-full px-4 py-2 border rounded-lg font-jost"
-						onChange={handleStartDateChange}
-					/>
-				</div>
-				<div>
-					<label htmlFor="endDate" className="block mb-2 font-dm text-lg">
-						{ui[lang].booking.checkOutDate}
-					</label>
-					<input
-						type="date"
-						id="endDate"
-						name="endDate"
-						required
-						className="w-full px-4 py-2 border rounded-lg font-jost"
-						onChange={handleEndDateChange}
-					/>
-				</div>
-			</div>
-
-			<div className="space-y-4">
+		<form onSubmit={handleSubmit} className="pt-[32px] lg:pt-[64px]">
+			<div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 				<div>
 					<label htmlFor="accommodationType" className="block mb-2 font-dm text-lg">
 						{ui[lang].booking.accommodationType}
@@ -60,15 +24,44 @@ const BookingForm: React.FC<BookingFormProps> = ({ lang, onAccommodationChange }
 						name="accommodationType"
 						required
 						className="w-full px-4 py-2 border rounded-lg font-jost"
-						onChange={(e) => {
-							handleAccommodationTypeChange(e);
-							onAccommodationChange(e.target.value);
-						}}
+						onChange={handleAccommodationTypeChange}
+						value={accommodationType}
 					>
 						<option value="">{ui[lang].booking.selectOption}</option>
 						<option value="House 12">House 12</option>
 						<option value="Loft 12">Loft 12</option>
 					</select>
+				</div>
+				<div>
+					<label htmlFor="startDate" className="block mb-2 font-dm text-lg">
+						{ui[lang].booking.checkInDate}
+					</label>
+					<input
+						type="text"
+						id="startDate"
+						name="startDate"
+						required
+						readOnly
+						className="w-full px-4 py-2 border rounded-lg font-jost"
+						value={checkInDate ? checkInDate.toLocaleDateString() : ''}
+					/>
+				</div>
+				<div>
+					<label htmlFor="endDate" className="block mb-2 font-dm text-lg">
+						{ui[lang].booking.checkOutDate}
+					</label>
+					<input
+						type="text"
+						id="endDate"
+						name="endDate"
+						required
+						readOnly
+						className="w-full px-4 py-2 border rounded-lg font-jost"
+						value={checkOutDate ? checkOutDate.toLocaleDateString() : ''}
+						placeholder={
+							checkInDate && !checkOutDate ? 'Select a valid check-out date' : ''
+						}
+					/>
 				</div>
 				<div>
 					<label htmlFor="guestsNumber" className="block mb-2 font-dm text-lg">
@@ -79,14 +72,11 @@ const BookingForm: React.FC<BookingFormProps> = ({ lang, onAccommodationChange }
 						id="guestsNumber"
 						name="guestsNumber"
 						min="1"
-						max={maxGuests}
+						max={maxGuests || undefined}
 						required
 						className="w-full px-4 py-2 border rounded-lg font-jost"
 					/>
 				</div>
-			</div>
-
-			<div className="space-y-4">
 				<div>
 					<label htmlFor="checkInTime" className="block mb-2 font-dm text-lg">
 						{ui[lang].booking.checkInTime}
@@ -114,7 +104,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ lang, onAccommodationChange }
 				</div>
 			</div>
 
-			<div className="md:col-span-2 lg:col-span-3">
+			<div className="mt-8">
 				<label htmlFor="specialRequests" className="block mb-2 font-dm text-lg">
 					{ui[lang].booking.specialRequests}
 				</label>
@@ -126,7 +116,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ lang, onAccommodationChange }
 				></textarea>
 			</div>
 
-			<div className="md:col-span-2 lg:col-span-3">
+			<div className="mt-8">
 				<Button text={ui[lang].booking.sendRequest} type="submit" />
 			</div>
 		</form>
