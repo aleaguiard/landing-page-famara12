@@ -1,17 +1,17 @@
 export const services = [
 	{
-		title: 'Beachfront Location',
-		text: 'Experience Famara Beach and sunset views from our prime location.',
+		title: 'Ideal Location',
+		text: 'Experience Famara beach and sunset views from our prime location.',
 		icon: '/beach-icon.png',
 	},
 	{
 		title: 'Private Terrace',
-		text: 'Relax on your private terrace, complete with outdoor furniture and scenic views.',
+		text: 'Relax on the private terrace, equipped with outdoor furniture, hammocks, and umbrellas.',
 		icon: '/terrace-icon.png',
 	},
 	{
 		title: 'Equipped Kitchen',
-		text: 'Prepare meals in our fully equipped kitchen with modern appliances and utensils.',
+		text: 'Enjoy cooking in a bright and fully equipped kitchen.',
 		icon: '/kitchen-icon.png',
 	},
 	{
@@ -21,12 +21,12 @@ export const services = [
 	},
 	{
 		title: 'Parking',
-		text: 'We offer a private parking space situated conveniently in front of our premises for your comfort.',
+		text: 'We offer a private parking space within the property for your convenience.',
 		icon: '/parking-icon.png',
 	},
 	{
-		title: 'Cleanliness',
-		text: 'Our property is thoroughly cleaned and sanitized for your comfort and peace of mind.',
+		title: 'Cleaning',
+		text: 'Our properties are thoroughly cleaned and disinfected for your enjoyment and well-being.',
 		icon: '/clean-icon.png',
 	},
 ];

@@ -59,7 +59,7 @@ const BookingForm: React.FC<BookingFormProps> = ({
 						className="w-full px-4 py-2 border rounded-lg font-jost"
 						value={checkOutDate ? checkOutDate.toLocaleDateString() : ''}
 						placeholder={
-							checkInDate && !checkOutDate ? 'Select a valid check-out date' : ''
+							checkInDate && !checkOutDate ? ui[lang].errors.invalidDate : ''
 						}
 					/>
 				</div>

@@ -23,6 +23,8 @@ interface UiTranslations {
 			calendarTitle: string;
 			selectDates: string;
 			minimumStay: string;
+			selectAccommodation: string;
+			noBookingsAvailable: string;
 			confirmationNote: string;
 		};
 		contactForm: {
@@ -50,6 +52,10 @@ interface UiTranslations {
 		button: {
 			bookNow: string;
 			discoverMore: string;
+		};
+		errors: {
+			invalidDate: string;
+			errorFetchingReservations: string;
 		};
 	};
 }

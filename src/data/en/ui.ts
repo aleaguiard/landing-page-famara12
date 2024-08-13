@@ -22,7 +22,9 @@ const englishTranslations: UiTranslations = {
 			sendRequest: 'Send Request',
 			calendarTitle: 'CALENDAR TO BOOK',
 			selectDates: 'Select your dates and preferences',
-			minimumStay: 'Minimum of 4 nights of duration',
+			minimumStay: 'Minimum stay of 4 nights',
+			selectAccommodation: 'Please select an accommodation.',
+			noBookingsAvailable: 'No bookings available.',
 			confirmationNote:
 				'*Please note that the booking will be confirmed once you receive the confirmation email.',
 		},
@@ -33,25 +35,29 @@ const englishTranslations: UiTranslations = {
 			phone: 'Phone',
 			message: 'Message',
 			sendMessage: 'Send Message',
-			info: 'If you have any questions, please feel free to contact us.',
+			info: 'If you have any questions, feel free to contact us.',
 		},
 		routes: {
 			home: 'Home',
 			properties: 'Properties',
-			booking: 'Booking',
+			booking: 'Bookings',
 			contact: 'Contact',
 		},
 		index: {
-			info: 'Welcome to our beautiful homes. Located in front of Famara Beach, these modern and comfortable properties offer the perfect place to relax and enjoy the sun',
+			info: 'Welcome to our beautiful homes. Located in front of Famara beach, these modern and comfortable apartments offer the perfect place to relax and enjoy the sun.',
 			servicesTitle: 'Services',
 			famaraBeachTitle: 'Famara Beach',
 			famaraBeachDescription:
-				"Located beneath the majestic Risco de Famara on Lanzarote's northwest coast, Famara Beach is a stunning retreat with golden sands and ideal conditions for surfing and wind sports. This serene location offers a peaceful escape, allowing you to unwind and connect with nature. Stay at our rental house in Famara for an unforgettable coastal getaway",
-			reviewsTitle: 'Reviews of our properties',
+				'Located beneath the majestic Famara cliffs on the north coast of Lanzarote, Famara beach is a great haven with golden sands and ideal conditions for surfing and wind sports. This serene spot is situated in one of the most beautiful areas of Lanzarote within the Famara Natural Park. Enjoy spectacular views of the Chinijo Archipelago.',
+			reviewsTitle: 'Reviews of Our Apartments',
 		},
 		button: {
 			bookNow: 'Book Now',
 			discoverMore: 'Discover More',
+		},
+		errors: {
+			invalidDate: 'Select a valid date',
+			errorFetchingReservations: 'Error loading reservations. Please try again later.',
 		},
 	},
 };

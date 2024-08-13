@@ -3,10 +3,7 @@ import { useContactForm } from '../utils/useContactForm';
 import Button from './button';
 import FloatingLabelInput from './floating-label-input';
 import { ui } from '../i18n/ui';
-
-interface ContactFormProps {
-	lang: keyof typeof ui;
-}
+import type { ContactFormProps } from '../utils/types';
 
 const ContactForm: React.FC<ContactFormProps> = ({ lang }) => {
 	const {

@@ -45,3 +45,31 @@ export interface BookingFormProps {
 	checkInDate: Date | null;
 	checkOutDate: Date | null;
 }
+
+export interface Button {
+	text?: string;
+	type?: 'submit' | 'button';
+	onClick?: () => void;
+	to?: string;
+	className?: string;
+}
+
+export interface ButtonProps {
+	text: string;
+	type?: 'submit' | 'button';
+	onClick?: () => void;
+	to?: string;
+}
+
+export interface ContactFormProps {
+	lang: keyof typeof ui;
+}
+
+export interface FloatingLabelInputProps {
+	id: string;
+	label: string;
+	type?: string;
+	value: string;
+	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	required?: boolean;
+}

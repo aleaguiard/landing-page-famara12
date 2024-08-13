@@ -27,14 +27,13 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
 		try {
 			const response = await fetch(`/api/reservation?loft=${selectedAccommodation}`);
 			if (!response.ok) {
-				throw new Error('Error al cargar las reservas');
+				throw new Error(ui[lang].errors.errorFetchingReservations);
 			}
 			const data = await response.json();
 			setReservas(data);
 			setError(null);
 		} catch (error) {
-			console.error('Error al cargar las reservas:', error);
-			setError('Error al cargar las reservas. Por favor, inténtelo de nuevo más tarde.');
+			setError(ui[lang].errors.errorFetchingReservations);
 		}
 	}
 
@@ -155,9 +154,6 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
 				<h2 className="font-dm tracking-wide text-center leading-[37px] lg:leading-[62.50px] text-[30px] lg:text-[40px] w-full capitalize lg:max-w-[75%] pb-2 mx-auto">
 					{ui[lang].booking.calendarTitle}
 				</h2>
-				<p className="text-base md:text-[20px] text-center tracking-tight font-jost text-text-gray leading-[33px] lg:max-w-[60%] mx-auto">
-					{ui[lang].booking.selectDates}
-				</p>
 				{error && <p className="text-red-500 text-center mt-4">{error}</p>}
 
 				{selectedAccommodation && (
@@ -176,8 +172,8 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
 				{reservas.length === 0 && (
 					<p className="text-center mt-4">
 						{selectedAccommodation
-							? 'No hay reservas disponibles.'
-							: 'Por favor, selecciona un alojamiento.'}
+							? ui[lang].booking.noBookingsAvailable
+							: ui[lang].booking.selectAccommodation}
 					</p>
 				)}
 

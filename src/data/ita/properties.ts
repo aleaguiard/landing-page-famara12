@@ -1,9 +1,9 @@
 export const properties = [
 	{
-		title: 'House 12',
+		title: 'Casa 12',
 		description:
-			'Tutta la casa con due stanze, adatta per fino a 4 ospiti. Completamente equipaggiata e moderna, è il posto perfetto per godere del tempo di qualità con la tua famiglia.',
-		buttonText: 'Prenota ora',
+			'Casa con due camere da letto, che può ospitare fino a 4 ospiti. Completamente attrezzata e moderna, è un luogo perfetto per godere di momenti di relax con la tua famiglia.',
+		buttonText: 'Prenota Ora',
 		images: [
 			'/FH22.jpg',
 			'/FH2.jpg',
@@ -30,8 +30,8 @@ export const properties = [
 	{
 		title: 'Loft 12',
 		description:
-			'Un indipendente alloggio con design moderno e attrezzature comodali. È il posto perfetto per rilassarti e godere della luce, indipendentemente da solo o con un partner.',
-		buttonText: 'Prenota ora',
+			'Loft dal design moderno per due persone. È un luogo perfetto per rilassarsi e godere del sole e della tranquillità della natura.',
+		buttonText: 'Prenota Ora',
 		images: [
 			'/FL1.jpg',
 			'/FL2.jpg',

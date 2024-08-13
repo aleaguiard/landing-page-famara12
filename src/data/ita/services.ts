@@ -1,32 +1,32 @@
 export const services = [
 	{
-		title: 'Posizione Fronte Spiaggia',
-		text: 'Vivi Famara Beach e goditi la vista del tramonto dalla nostra posizione privilegiata.',
+		title: 'Posizione Ideale',
+		text: 'Sperimenta la spiaggia di Famara e le viste del tramonto dalla nostra posizione privilegiata.',
 		icon: '/beach-icon.png',
 	},
 	{
 		title: 'Terrazza Privata',
-		text: 'Rilassati sulla tua terrazza privata, completa di mobili da esterno e vista panoramica.',
+		text: 'Rilassati sulla terrazza privata, attrezzata con mobili da esterno, amache e ombrelloni.',
 		icon: '/terrace-icon.png',
 	},
 	{
 		title: 'Cucina Attrezzata',
-		text: 'Prepara pasti nella nostra cucina completamente attrezzata con elettrodomestici moderni e utensili.',
+		text: 'Goditi la preparazione dei pasti in una cucina luminosa e completamente attrezzata.',
 		icon: '/kitchen-icon.png',
 	},
 	{
 		title: 'WiFi Gratuito',
-		text: 'Goditi l’accesso al WiFi ad alta velocità in tutta la proprietà. Ideale per il lavoro da remoto.',
+		text: "Goditi l'accesso a WiFi ad alta velocità in tutta la proprietà. Ideale per il lavoro remoto.",
 		icon: '/wifi-icon.png',
 	},
 	{
 		title: 'Parcheggio',
-		text: 'Offriamo un parcheggio privato situato comodamente di fronte ai nostri locali per la tua comodità.',
+		text: "Offriamo un posto auto privato all'interno della proprietà per la tua comodità.",
 		icon: '/parking-icon.png',
 	},
 	{
 		title: 'Pulizia',
-		text: 'La nostra proprietà è completamente pulita e sanificata per il tuo comfort e la tua tranquillità.',
+		text: 'Le nostre proprietà vengono pulite e disinfettate a fondo per il tuo comfort e benessere.',
 		icon: '/clean-icon.png',
 	},
 ];

@@ -23,6 +23,8 @@ const spanishTranslations: UiTranslations = {
 			calendarTitle: 'CALENDARIO PARA RESERVAR',
 			selectDates: 'Selecciona tus fechas y preferencias',
 			minimumStay: 'Mínimo de 4 noches de duración',
+			selectAccommodation: 'Por favor, selecciona un alojamiento.',
+			noBookingsAvailable: 'No hay reservas disponibles.',
 			confirmationNote:
 				'*Ten en cuenta que la reserva se confirmará una vez que recibas el correo de confirmación.',
 		},
@@ -52,6 +54,11 @@ const spanishTranslations: UiTranslations = {
 		button: {
 			bookNow: 'Reservar',
 			discoverMore: 'Descubre más',
+		},
+		errors: {
+			invalidDate: 'Selecciona una fecha válida',
+			errorFetchingReservations:
+				'Error al cargar las reservas. Por favor, inténtelo de nuevo más tarde.',
 		},
 	},
 };
