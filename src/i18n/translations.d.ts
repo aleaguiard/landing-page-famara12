@@ -9,6 +9,7 @@ interface UiTranslations {
 		};
 		footer: {
 			contact: string;
+			license: string;
 		};
 		booking: {
 			checkInDate: string;

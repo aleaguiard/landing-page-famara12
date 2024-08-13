@@ -9,6 +9,7 @@ const italianTranslations: UiTranslations = {
 		},
 		footer: {
 			contact: 'Contattaci',
+			license: 'Licenza',
 		},
 		booking: {
 			checkInDate: 'Data di arrivo',

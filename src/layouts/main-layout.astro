@@ -3,6 +3,7 @@ import { type LayoutProps } from '../utils/types';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import { getLangFromUrl } from '../i18n/utils';
+import { ui } from '../i18n/ui';
 
 const { title } = Astro.props as LayoutProps;
 
@@ -15,7 +16,7 @@ const currentPath = Astro.url.pathname;
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<meta name="description" content="Holidays Booking Famara 12" />
+		<meta name="description" content="Famara House 12" />
 		<meta title={title} />
 
 		<link rel="icon" type="image/jpg" href="/LogoH.png" />
@@ -30,9 +31,7 @@ const currentPath = Astro.url.pathname;
 	</head>
 	<body>
 		<main class="min-h-screen flex flex-col">
-			{/* Añadimos el fondo como imagen de fondo del `main` */}
 			<div class="flex-grow bg-main bg-no-repeat bg-cover bg-center">
-				{/* Navbar fuera del div de contenido */}
 				<Navbar client:load lang={lang} currentPath={currentPath} />
 				<slot />
 			</div>
@@ -41,7 +40,7 @@ const currentPath = Astro.url.pathname;
 		<p
 			class="tracking-tight text-base text-center border border-gray-300 bg-white py-10 lg:text-[22px] lg:leading-[33px] font-jost text-text-gray"
 		>
-			Copyright © Famara 12
+			Copyright © Famara 12 | {ui[lang].footer.license}: VV-35-3-0001836
 		</p>
 	</body>
 </html>
