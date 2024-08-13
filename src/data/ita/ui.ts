@@ -2,7 +2,7 @@ const italianTranslations: UiTranslations = {
 	ita: {
 		nav: {
 			title: 'Famara 12',
-			home: 'Inizio',
+			home: 'Home',
 			properties: 'Proprietà',
 			booking: 'Prenotazione',
 			contact: 'Contatto',
@@ -11,19 +11,22 @@ const italianTranslations: UiTranslations = {
 			contact: 'Contattaci',
 		},
 		booking: {
-			checkInDate: 'Data di partenza',
-			checkOutDate: 'Data di arrivo',
-			accommodationType: 'Tipo di alloggio',
+			checkInDate: 'Data di arrivo',
+			checkOutDate: 'Data di partenza',
+			accommodationType: 'Tipo di sistemazione',
 			selectOption: "Seleziona un'opzione",
-			numberOfGuests: 'Numero di ospiti',
-			checkInTime: 'Orario di partenza',
+			numberOfGuests: 'Ospiti',
+			checkInTime: 'Orario di arrivo',
 			email: 'Email',
 			specialRequests: 'Richieste speciali',
 			sendRequest: 'Invia richiesta',
-			calendarTitle: 'CALENDARIO PER PRENOTARE',
-			selectDates: 'Seleziona le tue date e le preferenze',
+			calendarTitle: 'Calendario per Prenotare',
+			selectDates: 'Seleziona le tue date e preferenze',
+			minimumStay: 'Soggiorno minimo di 4 notti',
+			selectAccommodation: 'Si prega di selezionare una sistemazione.',
+			noBookingsAvailable: 'Nessuna prenotazione disponibile.',
 			confirmationNote:
-				'*Si prega di notare che la prenotazione verrà confermata una volta ricevuta la conferma via email.',
+				"*Si prega di notare che la prenotazione sarà confermata una volta ricevuta l'email di conferma.",
 		},
 		contactForm: {
 			name: 'Nome',
@@ -32,25 +35,30 @@ const italianTranslations: UiTranslations = {
 			phone: 'Telefono',
 			message: 'Messaggio',
 			sendMessage: 'Invia messaggio',
-			info: 'Se hai domande, sentiti libero di contattarci.',
+			info: 'Se hai domande, non esitare a contattarci.',
 		},
 		routes: {
-			home: 'Inizio',
-			properties: 'Proprieta',
-			booking: 'Prenotazione',
+			home: 'Home',
+			properties: 'Proprietà',
+			booking: 'Prenotazioni',
 			contact: 'Contatto',
 		},
 		index: {
-			info: 'Benvenuti nelle nostre belle case. Posizionate in fronte a Famara Beach, queste case moderne e confortevoli offrono il posto perfetto per rilassarti e godere della luce.',
+			info: 'Benvenuto nelle nostre bellissime case. Situati di fronte alla spiaggia di Famara, questi moderni e confortevoli appartamenti offrono il luogo perfetto per rilassarsi e godersi il sole.',
 			servicesTitle: 'Servizi',
 			famaraBeachTitle: 'Spiaggia di Famara',
 			famaraBeachDescription:
-				"Posizionate sotto il riscoso di Famara sulla costa nord-ovest di Lanzarote, Famara Beach è un rifugio stupendo con sabbia dorate e condizioni ideali per surf e sport ventoso. Questo luogo sereno offre un'escursione calma, consentendoti di rilassarti e connetterti con la natura. Rimani a casa in Famara per un'escursione costiera incontaminata.",
-			reviewsTitle: 'Recensioni delle nostre case',
+				"Situata sotto il maestoso rischio di Famara sulla costa nord di Lanzarote, la spiaggia di Famara è un ottimo rifugio con sabbia dorata e condizioni ideali per il surf e gli sport acquatici. Questo luogo sereno si trova in una delle zone più belle di Lanzarote all'interno del Parco Naturale di Famara. Goditi spettacolari viste sull'Arcipelago Chinijo.",
+			reviewsTitle: 'Recensioni dei Nostri Appartamenti',
 		},
 		button: {
-			bookNow: 'Prenota ora',
+			bookNow: 'Prenota Ora',
 			discoverMore: 'Scopri di più',
+		},
+		errors: {
+			invalidDate: 'Seleziona una data valida',
+			errorFetchingReservations:
+				'Errore nel caricamento delle prenotazioni. Per favore, riprova più tardi.',
 		},
 	},
 };

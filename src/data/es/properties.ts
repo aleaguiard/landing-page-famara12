@@ -2,7 +2,7 @@ export const properties = [
 	{
 		title: 'House 12',
 		description:
-			'Casa completa con dos dormitorios, que acomoda hasta 4 huéspedes. Totalmente equipada y moderna, es el lugar perfecto para disfrutar de tiempo de calidad con tu familia.',
+			'Casa con dos dormitorios, que acomoda hasta 4 huéspedes. Totalmente equipada y moderna, lugar perfecto para disfrutar de tiempo de relax con tu familia.',
 		buttonText: 'Reservar Ahora',
 		images: [
 			'/FH22.jpg',
@@ -30,7 +30,7 @@ export const properties = [
 	{
 		title: 'Loft 12',
 		description:
-			'Un loft completamente independiente con diseño moderno y muebles cómodos. Es el lugar perfecto para relajarse y disfrutar del sol, ya sea solo o en pareja.',
+			'Loft de diseño moderno para dos personas. Es un lugar perfecto para relajarse y disfrutar del sol y la tranquilidad de la naturaleza.',
 		buttonText: 'Reservar Ahora',
 		images: [
 			'/FL1.jpg',

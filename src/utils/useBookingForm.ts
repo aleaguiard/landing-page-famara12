@@ -1,17 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-export const useBookingForm = () => {
-	const [maxGuests, setMaxGuests] = useState(4);
-	const [startDate, setStartDate] = useState('');
-	const [endDate, setEndDate] = useState('');
+export const useBookingForm = (onAccommodationChange: (value: string) => void) => {
+	const [maxGuests, setMaxGuests] = useState<number | null>(null);
+	const [startDate, setStartDate] = useState<string>('');
+	const [endDate, setEndDate] = useState<string>('');
+	const [accommodationType, setAccommodationType] = useState<string>('');
 
 	const handleAccommodationTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		const value = event.target.value;
+		setAccommodationType(value);
 		if (value === 'House 12') {
 			setMaxGuests(4);
 		} else if (value === 'Loft 12') {
 			setMaxGuests(2);
+		} else {
+			setMaxGuests(null);
 		}
+		onAccommodationChange(value);
 	};
 
 	const handleStartDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,23 +26,6 @@ export const useBookingForm = () => {
 	const handleEndDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setEndDate(event.target.value);
 	};
-
-	useEffect(() => {
-		const today = new Date();
-		const startDateInput = document.getElementById('startDate') as HTMLInputElement;
-		if (startDateInput) {
-			startDateInput.min = today.toISOString().split('T')[0];
-		}
-
-		if (startDate) {
-			const minEndDate = new Date(startDate);
-			minEndDate.setDate(minEndDate.getDate() + 4);
-			const endDateInput = document.getElementById('endDate') as HTMLInputElement;
-			if (endDateInput) {
-				endDateInput.min = minEndDate.toISOString().split('T')[0];
-			}
-		}
-	}, [startDate]);
 
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -55,8 +43,13 @@ export const useBookingForm = () => {
 			return;
 		}
 
-		if (parseInt(data.guestsNumber as string) > maxGuests) {
-			alert(`El número máximo de huéspedes para ${data.accommodationType} es ${maxGuests}.`);
+		const guestCount = parseInt(data.guestsNumber as string, 10);
+		if (maxGuests === null) {
+			alert('Por favor, seleccione un tipo de alojamiento.');
+			return;
+		}
+		if (guestCount > maxGuests) {
+			alert(`El máximo de huéspedes para ${accommodationType} es ${maxGuests}`);
 			return;
 		}
 
@@ -72,6 +65,8 @@ export const useBookingForm = () => {
 			if (response.ok) {
 				alert('Request sent successfully. We will contact you soon.');
 				form.reset();
+				setAccommodationType('');
+				setMaxGuests(null);
 			} else {
 				alert('Error sending the request. Please try again.');
 			}
@@ -87,5 +82,6 @@ export const useBookingForm = () => {
 		handleStartDateChange,
 		handleEndDateChange,
 		handleSubmit,
+		accommodationType,
 	};
 };

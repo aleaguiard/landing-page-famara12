@@ -1,11 +1,5 @@
 import ArrowPri from '../icons/arrow-pri';
-
-export interface ButtonProps {
-	text: string;
-	type?: 'submit' | 'button';
-	onClick?: () => void;
-	to?: string;
-}
+import type { ButtonProps } from '../utils/types';
 
 const Button = (props: ButtonProps) => {
 	const { text = 'Default Text', type = 'button', onClick, to } = props;

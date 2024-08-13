@@ -9,7 +9,7 @@ export const reviews = [
 	},
 	{
 		title: 'Ospiti',
-		info: 'Oltre 500 ospiti felici',
+		info: 'Oltre 500 ospiti',
 	},
 	{
 		title: 'Anni di Servizio',

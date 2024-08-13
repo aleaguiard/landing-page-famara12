@@ -1,23 +1,23 @@
 export const bookingInfo = [
 	{
 		title: 'Precios Loft 12',
-		text: 'Precio por noche: 110€.',
+		text: 'Precio por noche: 110€ - 2 huéspedes.',
 	},
 	{
 		title: 'Precios House 12',
-		text: 'Precio por noche: 120€.',
+		text: 'Precio por noche: 120€ - 2 huéspedes.',
 	},
 	{
-		title: 'Cesta de Bienvenida',
-		text: 'Disfruta de una cesta de bienvenida de cortesía y una botella de vino a tu llegada.',
+		title: 'Huésped Adicional',
+		text: 'Los huéspedes adicionales tienen un cargo extra de 15€ por noche.',
 	},
 	{
-		title: 'Cargo por Huésped Adicional',
-		text: 'Los huéspedes adicionales son bienvenidos por un cargo extra de 15€.',
+		title: 'Bienvenida',
+		text: 'Cesta de bienvenida con productos locales.',
 	},
 	{
 		title: 'Disponibilidad de Cuna',
-		text: 'Se puede solicitar una cuna para tu conveniencia.',
+		text: 'Se puede solicitar una cuna y silla para bebés.',
 	},
 	{
 		title: 'Garantía del Mejor Precio',

@@ -1,26 +1,26 @@
 export const bookingInfo = [
 	{
-		title: 'Loft 12 Pricing',
-		text: 'Price per night: 110€.',
+		title: 'Loft 12 Prices',
+		text: 'Price per night: 110€ - 2 guests.',
 	},
 	{
-		title: 'House 12 Pricing',
-		text: 'Price per night: 120€.',
+		title: 'House 12 Prices',
+		text: 'Price per night: 120€ - 2 guests.',
 	},
 	{
-		title: 'Welcome Basket',
-		text: 'Enjoy a complimentary welcome basket and a bottle of wine upon arrival.',
+		title: 'Additional Guest',
+		text: 'Additional guests have an extra charge of 15€ per night.',
 	},
 	{
-		title: 'Extra Guest Fee',
-		text: 'Additional guests are welcome for an extra fee of 15€.',
+		title: 'Welcome',
+		text: 'Welcome basket with local products.',
 	},
 	{
 		title: 'Crib Availability',
-		text: 'A crib is available upon request for your convenience.',
+		text: 'A crib and high chair can be requested.',
 	},
 	{
 		title: 'Best Price Guarantee',
-		text: 'We assure you the best price when you book directly with us.',
+		text: 'We guarantee the best price when you book directly with us.',
 	},
 ];

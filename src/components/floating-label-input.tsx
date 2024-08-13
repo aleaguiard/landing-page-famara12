@@ -1,13 +1,5 @@
 import React from 'react';
-
-interface FloatingLabelInputProps {
-	id: string;
-	label: string;
-	type?: string;
-	value: string;
-	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	required?: boolean;
-}
+import type { FloatingLabelInputProps } from '../utils/types';
 
 const FloatingLabelInput: React.FC<FloatingLabelInputProps> = ({
 	id,

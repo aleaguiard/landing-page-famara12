@@ -15,13 +15,16 @@ const spanishTranslations: UiTranslations = {
 			checkOutDate: 'Fecha de salida',
 			accommodationType: 'Tipo de alojamiento',
 			selectOption: 'Selecciona una opción',
-			numberOfGuests: 'Número de huéspedes',
+			numberOfGuests: 'Huéspedes',
 			checkInTime: 'Hora de entrada',
 			email: 'Correo electrónico',
 			specialRequests: 'Solicitudes especiales',
 			sendRequest: 'Enviar solicitud',
 			calendarTitle: 'CALENDARIO PARA RESERVAR',
 			selectDates: 'Selecciona tus fechas y preferencias',
+			minimumStay: 'Mínimo de 4 noches de duración',
+			selectAccommodation: 'Por favor, selecciona un alojamiento.',
+			noBookingsAvailable: 'No hay reservas disponibles.',
 			confirmationNote:
 				'*Ten en cuenta que la reserva se confirmará una vez que recibas el correo de confirmación.',
 		},
@@ -45,12 +48,17 @@ const spanishTranslations: UiTranslations = {
 			servicesTitle: 'Servicios',
 			famaraBeachTitle: 'Playa de Famara',
 			famaraBeachDescription:
-				'Localizado bajo el majestuoso risco de Famara en la costa norte de Lanzarote, la playa de Famara es un refugio estupendo con arenas doradas y condiciones ideales para el surf y el deporte de viento. Este lugar sereno ofrece una escapada tranquila, permitiendote desvanecerte y conectarte con la naturaleza. ¡Alójate en nuestro hogar para que disfrutes de una escapada inolvidable!',
+				'Localizada bajo el majestuoso risco de Famara en la costa norte de Lanzarote, la playa de Famara es un refugio estupendo con arenas doradas y condiciones ideales para el surf y el deporte de viento. Este sereno lugar está situado en una de las zonas más bellas de Lanzarote dentro del Parque Natural de Famara. Goza de espectataculares vistas al Archipiélago Chinijo',
 			reviewsTitle: 'Reseñas de nuestros apartamentos',
 		},
 		button: {
 			bookNow: 'Reservar',
 			discoverMore: 'Descubre más',
+		},
+		errors: {
+			invalidDate: 'Selecciona una fecha válida',
+			errorFetchingReservations:
+				'Error al cargar las reservas. Por favor, inténtelo de nuevo más tarde.',
 		},
 	},
 };

@@ -1,26 +1,26 @@
 export const bookingInfo = [
 	{
-		title: 'Loft 12 Prezzo',
-		text: 'Prezzo per la notte: 110€.',
+		title: 'Prezzi Loft 12',
+		text: 'Prezzo per notte: 110€ - 2 ospiti.',
 	},
 	{
-		title: 'House 12 Prezzo',
-		text: 'Prezzo per la notte: 120€.',
+		title: 'Prezzi House 12',
+		text: 'Prezzo per notte: 120€ - 2 ospiti.',
 	},
 	{
-		title: 'Basket Benvenuto',
-		text: 'Goditi un basso di benvenuto e una bottiglia di vino alla tua arrivo.',
+		title: 'Ospite Aggiuntivo',
+		text: 'Gli ospiti aggiuntivi hanno un costo extra di 15€ a notte.',
 	},
 	{
-		title: 'Commissione Extra',
-		text: 'Gli extra ospiti sono benvenuti per una commissione extra di 15€.',
+		title: 'Benvenuto',
+		text: 'Cesto di benvenuto con prodotti locali.',
 	},
 	{
-		title: 'Disponibilità Crib',
-		text: 'Un crib è disponibile per richiesta per la tua convenienza.',
+		title: 'Disponibilità Culla',
+		text: 'È possibile richiedere una culla e un seggiolone.',
 	},
 	{
-		title: 'Garanzia del prezzo migliore',
-		text: 'Ti assicuriamo del prezzo migliore quando prendiamo la prenotazione direttamente con noi.',
+		title: 'Garanzia Miglior Prezzo',
+		text: 'Ti garantiamo il miglior prezzo quando prenoti direttamente con noi.',
 	},
 ];

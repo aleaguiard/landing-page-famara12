@@ -2,7 +2,7 @@ export const properties = [
 	{
 		title: 'House 12',
 		description:
-			"Entire house with two bedrooms, accommodating up to 4 guests. Fully equipped and modern, it's the perfect place to enjoy quality time with your family.",
+			'House with two bedrooms, accommodating up to 4 guests. Fully equipped and modern, a perfect place to enjoy relaxing time with your family.',
 		buttonText: 'Book Now',
 		images: [
 			'/FH22.jpg',
@@ -30,7 +30,7 @@ export const properties = [
 	{
 		title: 'Loft 12',
 		description:
-			'A completely independent loft with modern design and comfortable furniture. It is the perfect place to relax and enjoy the sun, whether alone or with a partner.',
+			'Modern design loft for two people. It is a perfect place to relax and enjoy the sun and tranquility of nature.',
 		buttonText: 'Book Now',
 		images: [
 			'/FL1.jpg',
