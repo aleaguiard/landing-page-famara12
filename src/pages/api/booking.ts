@@ -22,6 +22,7 @@ export const POST: APIRoute = async ({ request }) => {
 		subject: 'Nueva solicitud de reserva',
 		html: `
             <h1>Nueva solicitud de reserva</h1>
+			<p><strong>Nombre:</strong> ${data.name}</p>
             <p><strong>Fecha de inicio:</strong> ${data.startDate}</p>
             <p><strong>Fecha de fin:</strong> ${data.endDate}</p>
             <p><strong>Tipo de alojamiento:</strong> ${data.accommodationType}</p>

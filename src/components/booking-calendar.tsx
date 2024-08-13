@@ -122,6 +122,12 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
 		if (tempStartDate && date.getTime() === tempStartDate.getTime()) {
 			return 'temp-selected-date';
 		}
+		if (start && date > start && date <= new Date(start.getTime() + 3 * 24 * 60 * 60 * 1000)) {
+			return 'blocked-date';
+		}
+		if (!isDateOccupied(date)) {
+			return 'available-date';
+		}
 
 		return '';
 	};
@@ -165,6 +171,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
 							tileDisabled={tileDisabled}
 							selectRange={false}
 							className="react-calendar"
+							locale={lang}
 						/>
 					</div>
 				)}
@@ -190,27 +197,37 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
 			</div>
 
 			<style>{`
-                .react-calendar .occupied-date {
-                    position: relative;
-                    color: #999;
-                    text-decoration: line-through;
-                }
+    .react-calendar .occupied-date {
+        position: relative;
+        color: #999;
+        text-decoration: line-through;
+    }
 
-                .react-calendar .occupied-date:hover {
-                    background-color: #f0f0f0;
-                    cursor: not-allowed;
-                }
+    .react-calendar .occupied-date:hover {
+        background-color: #f0f0f0;
+        cursor: not-allowed;
+    }
 
-                .react-calendar .selected-date {
-                    background-color: #007bff;
-                    color: white;
-                }
+    .react-calendar .selected-date {
+        background-color: #007bff;
+        color: white;
+    }
 
-                .react-calendar .temp-selected-date {
-                    background-color: #b3d7ff;
-                    color: black;
-                }
-            `}</style>
+    .react-calendar .temp-selected-date {
+        background-color: #b3d7ff;
+        color: black;
+    }
+
+    .react-calendar .available-date:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .react-calendar .blocked-date {
+        background-color: #b3d7ff;
+        color: black;
+    }
+`}</style>
 		</section>
 	);
 };

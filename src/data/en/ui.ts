@@ -15,7 +15,7 @@ const englishTranslations: UiTranslations = {
 			checkOutDate: 'Check-out Date',
 			accommodationType: 'Accommodation Type',
 			selectOption: 'Select an option',
-			numberOfGuests: 'Number of Guests',
+			numberOfGuests: 'Guests',
 			checkInTime: 'Check-in Time',
 			email: 'Email',
 			specialRequests: 'Special Requests',

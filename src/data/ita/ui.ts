@@ -1,5 +1,5 @@
 const italianTranslations: UiTranslations = {
-	it: {
+	ita: {
 		nav: {
 			title: 'Famara 12',
 			home: 'Home',
@@ -15,7 +15,7 @@ const italianTranslations: UiTranslations = {
 			checkOutDate: 'Data di partenza',
 			accommodationType: 'Tipo di sistemazione',
 			selectOption: "Seleziona un'opzione",
-			numberOfGuests: 'Numero di ospiti',
+			numberOfGuests: 'Ospiti',
 			checkInTime: 'Orario di arrivo',
 			email: 'Email',
 			specialRequests: 'Richieste speciali',
