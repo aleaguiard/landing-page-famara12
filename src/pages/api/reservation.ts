@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { format, addDays } from 'date-fns';
+import { format } from 'date-fns';
 import ical from 'ical';
 import fetch from 'node-fetch';
 
@@ -45,7 +45,7 @@ export const GET: APIRoute = async ({ params, request }) => {
 					reservas.push({
 						title: 'No disponible',
 						start: format(new Date(start), 'yyyy-MM-dd'),
-						end: format(addDays(new Date(end), 1), 'yyyy-MM-dd'),
+						end: format(new Date(end), 'yyyy-MM-dd'),
 						display: 'background',
 						color: 'red',
 					});
