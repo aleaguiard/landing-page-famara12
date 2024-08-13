@@ -23,7 +23,7 @@ const englishTranslations: UiTranslations = {
 			calendarTitle: 'CALENDAR TO BOOK',
 			selectDates: 'Select your dates and preferences',
 			minimumStay: 'Minimum stay of 4 nights',
-			selectAccommodation: 'Please select an accommodation.',
+			selectAccommodation: 'Please select a property.',
 			noBookingsAvailable: 'No bookings available.',
 			confirmationNote:
 				'*Please note that the booking will be confirmed once you receive the confirmation email.',
@@ -48,8 +48,8 @@ const englishTranslations: UiTranslations = {
 			servicesTitle: 'Services',
 			famaraBeachTitle: 'Famara Beach',
 			famaraBeachDescription:
-				'Located beneath the majestic Famara cliffs on the north coast of Lanzarote, Famara beach is a great haven with golden sands and ideal conditions for surfing and wind sports. This serene spot is situated in one of the most beautiful areas of Lanzarote within the Famara Natural Park. Enjoy spectacular views of the Chinijo Archipelago.',
-			reviewsTitle: 'Reviews of Our Apartments',
+				'Located beneath the majestic Risco de Famara on the north coast of Lanzarote, Famara beach is a great haven with golden sands and ideal conditions for surfing and wind sports. This serene spot is situated in one of the most beautiful areas of Lanzarote within the Famara Natural Park. Enjoy spectacular views of the Chinijo Archipelago.',
+			reviewsTitle: 'Reviews of Our Properties',
 		},
 		button: {
 			bookNow: 'Book Now',

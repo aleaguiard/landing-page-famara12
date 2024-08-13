@@ -48,7 +48,7 @@ const spanishTranslations: UiTranslations = {
 			servicesTitle: 'Servicios',
 			famaraBeachTitle: 'Playa de Famara',
 			famaraBeachDescription:
-				'Localizada bajo el majestuoso risco de Famara en la costa norte de Lanzarote, la playa de Famara es un refugio estupendo con arenas doradas y condiciones ideales para el surf y el deporte de viento. Este sereno lugar está situado en una de las zonas más bellas de Lanzarote dentro del Parque Natural de Famara. Goza de espectataculares vistas al Archipiélago Chinijo',
+				'Localizada bajo el majestuoso risco de Famara en la costa norte de Lanzarote, la playa de Famara es un refugio estupendo con arenas doradas y condiciones ideales para el surf y el deporte de viento. Este sereno lugar está situado en una de las zonas más bellas de Lanzarote dentro del Parque Natural de Famara. Goza de espectaculares vistas al Archipiélago Chinijo',
 			reviewsTitle: 'Reseñas de nuestros apartamentos',
 		},
 		button: {

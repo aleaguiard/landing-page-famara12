@@ -11,7 +11,7 @@ export const services = [
 	},
 	{
 		title: 'Cocina Equipada',
-		text: 'Disfruta de la preparación de comidas en una cocina luminosa y totalmente equipada.',
+		text: 'Disfruta de la preparación de comidas en una cocina práctica y totalmente equipada.',
 		icon: '/kitchen-icon.png',
 	},
 	{

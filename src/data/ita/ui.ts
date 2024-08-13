@@ -13,7 +13,7 @@ const italianTranslations: UiTranslations = {
 		booking: {
 			checkInDate: 'Data di arrivo',
 			checkOutDate: 'Data di partenza',
-			accommodationType: 'Tipo di sistemazione',
+			accommodationType: 'Tipo di proprietà',
 			selectOption: "Seleziona un'opzione",
 			numberOfGuests: 'Ospiti',
 			checkInTime: 'Orario di arrivo',
@@ -23,7 +23,7 @@ const italianTranslations: UiTranslations = {
 			calendarTitle: 'Calendario per Prenotare',
 			selectDates: 'Seleziona le tue date e preferenze',
 			minimumStay: 'Soggiorno minimo di 4 notti',
-			selectAccommodation: 'Si prega di selezionare una sistemazione.',
+			selectAccommodation: 'Si prega di selezionare una proprietà.',
 			noBookingsAvailable: 'Nessuna prenotazione disponibile.',
 			confirmationNote:
 				"*Si prega di notare che la prenotazione sarà confermata una volta ricevuta l'email di conferma.",
@@ -48,8 +48,8 @@ const italianTranslations: UiTranslations = {
 			servicesTitle: 'Servizi',
 			famaraBeachTitle: 'Spiaggia di Famara',
 			famaraBeachDescription:
-				"Situata sotto il maestoso rischio di Famara sulla costa nord di Lanzarote, la spiaggia di Famara è un ottimo rifugio con sabbia dorata e condizioni ideali per il surf e gli sport acquatici. Questo luogo sereno si trova in una delle zone più belle di Lanzarote all'interno del Parco Naturale di Famara. Goditi spettacolari viste sull'Arcipelago Chinijo.",
-			reviewsTitle: 'Recensioni dei Nostri Appartamenti',
+				"Situata sotto il maestoso Risco di Famara sulla costa nord di Lanzarote, la spiaggia di Famara è un ottimo rifugio con sabbia dorata e condizioni ideali per il surf e gli sport acquatici. Questo luogo sereno si trova in una delle zone più belle di Lanzarote all'interno del Parco Naturale di Famara. Goditi spettacolari viste sull'Arcipelago Chinijo.",
+			reviewsTitle: 'Recensioni delle nostre proprietà',
 		},
 		button: {
 			bookNow: 'Prenota Ora',

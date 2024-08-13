@@ -16,7 +16,7 @@ export const bookingInfo = [
 		text: 'Welcome basket with local products.',
 	},
 	{
-		title: 'Crib Availability',
+		title: 'Baby Crib Availability',
 		text: 'A crib and high chair can be requested.',
 	},
 	{

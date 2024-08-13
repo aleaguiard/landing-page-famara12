@@ -5,7 +5,7 @@ export const reviews = [
 	},
 	{
 		title: 'Nights Booked',
-		info: 'Over 1,500 nights',
+		info: 'Over 1.500 nights',
 	},
 	{
 		title: 'Guests',
