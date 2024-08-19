@@ -6,6 +6,7 @@ import 'react-calendar/dist/Calendar.css';
 import * as React from 'react';
 import type { CalendarProps } from 'react-calendar';
 import type { BookingCalendarProps, Reserva } from '../utils/types';
+import { isAfter } from 'date-fns';
 
 const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
 	const [reservas, setReservas] = useState<Reserva[]>([]);
@@ -109,6 +110,13 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
 	const tileClassName = ({ date, view }: { date: Date; view: string }) => {
 		if (view !== 'month') return '';
 
+		const today = new Date();
+		today.setHours(0, 0, 0, 0);
+
+		if (!isAfter(date, today)) {
+			return 'past-date';
+		}
+
 		const [start, end] = dateRange;
 
 		if (isDateOccupied(date)) {
@@ -134,6 +142,13 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
 
 	const tileDisabled = ({ date, view }: { date: Date; view: string }) => {
 		if (view !== 'month') return false;
+
+		const today = new Date();
+		today.setHours(0, 0, 0, 0);
+
+		if (!isAfter(date, today)) {
+			return true;
+		}
 
 		const [start] = dateRange;
 		if (start) {
@@ -226,6 +241,16 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
     .react-calendar .blocked-date {
         background-color: #b3d7ff;
         color: black;
+    }
+
+    .react-calendar .past-date {
+        color: #999;
+        text-decoration: line-through;
+    }
+
+    .react-calendar .past-date:hover {
+        background-color: #f0f0f0;
+        cursor: not-allowed;
     }
 `}</style>
 		</section>
