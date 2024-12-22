@@ -9,7 +9,7 @@ const translatePath = useTranslatedPath(lang);
 
 let bookingInfo;
 try {
-  bookingInfo = (await import(`../../data/${lang}/booking-info`)).bookingInfo;
+  bookingInfo = (await import(`../../data/${lang}/booking-info.ts`)).bookingInfo;
 } catch (error) {
   console.error(`Error loading booking info for language "${lang}":`, error);
   bookingInfo = []; // Por si hay un error, usa un valor por defecto

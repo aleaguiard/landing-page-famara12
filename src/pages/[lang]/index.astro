@@ -14,8 +14,8 @@ let reviews;
 let services;
 
 try {
-  reviews = (await import(`../../data/${lang}/reviews`)).reviews;
-  services = (await import(`../../data/${lang}/services`)).services;
+  reviews = (await import(`../../data/${lang}/reviews.ts`)).reviews;
+  services = (await import(`../../data/${lang}/services.ts`)).services;
 } catch (error) {
   console.error(`Error loading data for language "${lang}":`, error);
   reviews = [];
