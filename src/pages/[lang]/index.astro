@@ -1,6 +1,4 @@
 ---
-import { reviews } from '../../data/en/reviews';
-import { services } from '../../data/en/services';
 import MainLayout from '../../layouts/main-layout.astro';
 import { getLangFromUrl, useTranslatedPath } from '../../i18n/utils';
 import { ui } from '../../i18n/ui';
@@ -11,6 +9,18 @@ import MainLogo from '../../icons/main-logo.astro';
 
 const lang = getLangFromUrl(Astro.url) as string;
 const translatePath = useTranslatedPath(lang);
+
+let reviews;
+let services;
+
+try {
+  reviews = (await import(`../../data/${lang}/reviews`)).reviews;
+  services = (await import(`../../data/${lang}/services`)).services;
+} catch (error) {
+  console.error(`Error loading data for language "${lang}":`, error);
+  reviews = [];
+  services = [];
+}
 ---
 
 <MainLayout title={`${ui[lang].nav.title}`}>

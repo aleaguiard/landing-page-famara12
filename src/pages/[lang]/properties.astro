@@ -1,7 +1,7 @@
 ---
 import Button from '../../components/button';
 import MainLayout from '../../layouts/main-layout.astro';
-import { properties } from '../../data/ita/properties';
+import { properties } from '../../data/en/properties';
 import { getLangFromUrl, useTranslatedPath } from '../../i18n/utils';
 import { ui } from '../../i18n/ui';
 import { Image } from 'astro:assets';
@@ -9,6 +9,13 @@ import type { Property } from '../../utils/types';
 
 const lang = getLangFromUrl(Astro.url) as string;
 const translatePath = useTranslatedPath(lang);
+let properties;
+try {
+  properties = (await import(`../../data/${lang}/properties`)).properties;
+} catch (error) {
+  console.error(`Error loading properties info for language "${lang}":`, error);
+  properties = []; 
+}
 ---
 
 <MainLayout title={`${ui[lang].nav.title} - ${ui[lang].nav.properties}`}>

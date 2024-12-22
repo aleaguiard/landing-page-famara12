@@ -1,12 +1,19 @@
 ---
 import BookingCalendar from '../../components/booking-calendar';
-import { bookingInfo } from '../../data/ita/booking-info';
 import MainLayout from '../../layouts/main-layout.astro';
 import { getLangFromUrl, useTranslatedPath } from '../../i18n/utils';
 import { ui } from '../../i18n/ui';
 
 const lang = getLangFromUrl(Astro.url) as string;
 const translatePath = useTranslatedPath(lang);
+
+let bookingInfo;
+try {
+  bookingInfo = (await import(`../../data/${lang}/booking-info`)).bookingInfo;
+} catch (error) {
+  console.error(`Error loading booking info for language "${lang}":`, error);
+  bookingInfo = []; // Por si hay un error, usa un valor por defecto
+}
 ---
 
 <MainLayout title=`${ui[lang].nav.title} - ${ui[lang].nav.booking}`>
