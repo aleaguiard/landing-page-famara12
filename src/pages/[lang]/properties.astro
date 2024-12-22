@@ -8,12 +8,14 @@ import type { Property } from '../../utils/types';
 
 const lang = getLangFromUrl(Astro.url) as string;
 const translatePath = useTranslatedPath(lang);
-let properties;
+
+let properties: Property[] = [];
+
 try {
   properties = (await import(`../../data/${lang}/properties.ts`)).properties;
 } catch (error) {
   console.error(`Error loading properties info for language "${lang}":`, error);
-  properties = []; 
+  properties = [];  // Fallback a un array vacío en caso de error
 }
 ---
 
