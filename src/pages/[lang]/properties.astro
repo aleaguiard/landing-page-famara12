@@ -176,7 +176,7 @@ try {
             let startX: number;
             let currentX: number;
             let isDragging = false;
-            let autoSlideInterval: number;
+            let autoSlideInterval: number | NodeJS.Timeout;
 
             // Mark images as loaded when they finish loading
             images.forEach(image => {
@@ -245,27 +245,29 @@ try {
                 }
             });
 
-            function handleDragStart(e: MouseEvent | TouchEvent) {
+            function handleDragStart(e: Event) {
                 isDragging = true;
-                startX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+                const event = e as MouseEvent | TouchEvent;
+                startX = 'touches' in event ? event.touches[0].clientX : (event as MouseEvent).clientX;
                 currentX = startX;
                 stopAutoSlide();
-                carousel.style.transition = 'none';
+                (carousel as HTMLElement).style.transition = 'none';
             }
 
-            function handleDragMove(e: MouseEvent | TouchEvent) {
+            function handleDragMove(e: Event) {
                 if (!isDragging) return;
-                e.preventDefault();
-                currentX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+                const event = e as MouseEvent | TouchEvent;
+                event.preventDefault();
+                currentX = 'touches' in event ? event.touches[0].clientX : (event as MouseEvent).clientX;
                 const diff = currentX - startX;
-                const offset = -currentIndex * 100 + (diff / carousel.offsetWidth) * 100;
-                carousel.style.transform = `translateX(${offset}%)`;
+                const offset = -currentIndex * 100 + (diff / (carousel as HTMLElement).offsetWidth) * 100;
+                (carousel as HTMLElement).style.transform = `translateX(${offset}%)`;
             }
 
             function handleDragEnd() {
                 if (!isDragging) return;
                 isDragging = false;
-                carousel.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                (carousel as HTMLElement).style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
                 const diff = currentX - startX;
                 if (Math.abs(diff) > 50) {
                     if (diff > 0 && currentIndex > 0) {
@@ -289,7 +291,7 @@ try {
 
             function updateCarousel() {
                 const offset = -currentIndex * 100;
-                carousel.style.transform = `translateX(${offset}%)`;
+                (carousel as HTMLElement).style.transform = `translateX(${offset}%)`;
             }
 
             function updateIndicators() {
