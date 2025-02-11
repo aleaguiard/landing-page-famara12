@@ -2,8 +2,8 @@ import { useState } from "react";
 
 export const useBookingForm = (onAccommodationChange: (value: string) => void) => {
   const [maxGuests, setMaxGuests] = useState<number | null>(null);
-  const [startDate, setStartDate] = useState<string>("");
-  const [endDate, setEndDate] = useState<string>("");
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [endDate, setEndDate] = useState<Date | null>(null);
   const [accommodationType, setAccommodationType] = useState<string>("");
 
   const handleAccommodationTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -20,11 +20,18 @@ export const useBookingForm = (onAccommodationChange: (value: string) => void) =
   };
 
   const handleStartDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setStartDate(event.target.value);
+    const date = new Date(event.target.value);
+    if (!isNaN(date.getTime())) {
+      setStartDate(date);
+    }
   };
 
   const handleEndDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEndDate(event.target.value);
+    const date = new Date(event.target.value);
+
+    if (!isNaN(date.getTime())) {
+      setEndDate(date);
+    }
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -40,8 +47,11 @@ export const useBookingForm = (onAccommodationChange: (value: string) => void) =
     }
 
     // Validación de fechas
-    const startDateObj = new Date(data.startDate as string);
-    const endDateObj = new Date(data.endDate as string);
+    const startDateString = data.startDate as string;
+    const endDateString = data.endDate as string;
+
+    const startDateObj = new Date(startDateString);
+    const endDateObj = new Date(endDateString);
 
     if (isNaN(startDateObj.getTime()) || isNaN(endDateObj.getTime())) {
       alert("Por favor, ingrese fechas válidas.");
@@ -86,8 +96,8 @@ export const useBookingForm = (onAccommodationChange: (value: string) => void) =
         form.reset();
         setAccommodationType("");
         setMaxGuests(null);
-        setStartDate("");
-        setEndDate("");
+        setStartDate(null);
+        setEndDate(null);
       } else {
         alert("Error al enviar la solicitud. Por favor, inténtelo de nuevo.");
       }
