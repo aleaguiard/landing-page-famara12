@@ -45,6 +45,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
 
   const handleAccommodationChange = useCallback((value: string) => {
     setSelectedAccommodation(value);
+    setDateRange([null, null]); // Resetear fechas al cambiar de alojamiento
   }, []);
 
   const isDateOccupied = useCallback(
