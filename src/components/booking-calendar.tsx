@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import BookingForm from "./booking-form";
 import { ui } from "../i18n/ui";
 import Calendar from "react-calendar";
@@ -17,6 +17,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
   const [tempStartDate, setTempStartDate] = useState<Date | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  // Cargar reservas cuando se selecciona un alojamiento
   useEffect(() => {
     if (selectedAccommodation) {
       cargarReservas();
@@ -26,6 +27,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
     }
   }, [selectedAccommodation]);
 
+  // Función para cargar las reservas desde la API
   async function cargarReservas() {
     setIsLoading(true);
     try {
@@ -43,11 +45,13 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
     }
   }
 
+  // Manejar el cambio de alojamiento
   const handleAccommodationChange = useCallback((value: string) => {
     setSelectedAccommodation(value);
-    setDateRange([null, null]); // Resetear fechas al cambiar de alojamiento
+    setDateRange([null, null]); // Reiniciar fechas al cambiar de alojamiento
   }, []);
 
+  // Verificar si una fecha está ocupada
   const isDateOccupied = useCallback(
     (date: Date): boolean => {
       return reservas.some((reserva) => {
@@ -59,6 +63,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
     [reservas],
   );
 
+  // Verificar si hay fechas bloqueadas en un rango
   const hasBlockedDatesInRange = useCallback(
     (start: Date, end: Date): boolean => {
       const currentDate = new Date(start);
@@ -73,6 +78,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
     [isDateOccupied],
   );
 
+  // Manejar el cambio de fecha en el calendario
   const handleDateChange: CalendarProps["onChange"] = useCallback(
     (value: any) => {
       if (Array.isArray(value) || !(value instanceof Date)) {
@@ -124,6 +130,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
     [dateRange, hasBlockedDatesInRange],
   );
 
+  // Contenido personalizado para las celdas del calendario
   const tileContent = useCallback(
     ({ date, view }: { date: Date; view: string }) => {
       if (view !== "month") return null;
@@ -131,20 +138,23 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
 
+      // Fechas pasadas
       if (!isAfter(date, today)) {
         return <FaTimesCircle className="icon past-date-icon" />;
       }
 
-      const [start, end] = dateRange;
-
+      // Fechas ocupadas
       if (isDateOccupied(date)) {
         return <FaTimesCircle className="icon occupied-date-icon" />;
       }
 
+      // Fechas seleccionadas
+      const [start, end] = dateRange;
       if (start && end && date >= start && date <= end) {
         return <FaCalendarDay className="icon selected-date-icon" />;
       }
 
+      // Fechas disponibles
       if (!isDateOccupied(date)) {
         return <FaCheckCircle className="icon available-date-icon" />;
       }
@@ -154,6 +164,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
     [dateRange, isDateOccupied],
   );
 
+  // Deshabilitar fechas no disponibles
   const tileDisabled = useCallback(
     ({ date, view }: { date: Date; view: string }) => {
       if (view !== "month") return false;
@@ -161,28 +172,15 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
 
+      // Deshabilitar fechas pasadas
       if (!isAfter(date, today)) {
         return true;
       }
 
-      const [start] = dateRange;
-      if (start) {
-        if (date.getTime() === start.getTime()) {
-          return false;
-        }
-        if (date < start) {
-          return true;
-        }
-
-        const minEndDate = addDays(start, 3);
-        if (date > start && date <= minEndDate) {
-          return true;
-        }
-      }
-
+      // Deshabilitar fechas ocupadas
       return isDateOccupied(date);
     },
-    [dateRange, isDateOccupied],
+    [isDateOccupied],
   );
 
   return (
@@ -229,55 +227,55 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
       </div>
 
       <style>{`
-    .fancy-calendar {
-        background: white;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        width: 100%;
-        max-width: 400px;
-    }
+        .fancy-calendar {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
 
-    .fancy-calendar .react-calendar__tile {
-        border-radius: 10px;
-        transition: all 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+        .fancy-calendar .react-calendar__tile {
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .fancy-calendar .react-calendar__tile:hover {
-        background: #f0f0f0;
-        color: #333;
-    }
+        .fancy-calendar .react-calendar__tile:hover {
+            background: #f0f0f0;
+            color: #333;
+        }
 
-    .fancy-calendar .react-calendar__tile--active {
-        background: #007bff;
-        color: white;
-    }
+        .fancy-calendar .react-calendar__tile--active {
+            background: #007bff;
+            color: white;
+        }
 
-    .fancy-calendar .icon {
-        font-size: 1.2em;
-        margin-top: 5px;
-    }
+        .fancy-calendar .icon {
+            font-size: 1.2em;
+            margin-top: 5px;
+        }
 
-    .fancy-calendar .occupied-date-icon {
-        color: #999;
-    }
+        .fancy-calendar .occupied-date-icon {
+            color: #ff4444;
+        }
 
-    .fancy-calendar .selected-date-icon {
-        color: white;
-    }
+        .fancy-calendar .selected-date-icon {
+            color: white;
+        }
 
-    .fancy-calendar .available-date-icon {
-        color: #00c853;
-    }
+        .fancy-calendar .available-date-icon {
+            color: #00c853;
+        }
 
-    .fancy-calendar .past-date-icon {
-        color: #999;
-    }
-`}</style>
+        .fancy-calendar .past-date-icon {
+            color: #999;
+        }
+      `}</style>
     </section>
   );
 };
