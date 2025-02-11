@@ -6,7 +6,8 @@ import "react-calendar/dist/Calendar.css";
 import * as React from "react";
 import type { CalendarProps } from "react-calendar";
 import type { BookingCalendarProps, Reserva } from "../utils/types";
-import { isAfter } from "date-fns";
+import { isAfter, addDays } from "date-fns";
+import { FaTimesCircle, FaCheckCircle, FaCalendarDay } from "react-icons/fa";
 
 const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
   const [reservas, setReservas] = useState<Reserva[]>([]);
@@ -56,6 +57,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
     },
     [reservas],
   );
+
   const hasBlockedDatesInRange = useCallback(
     (start: Date, end: Date): boolean => {
       const currentDate = new Date(start);
@@ -78,28 +80,34 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
 
       const [start, end] = dateRange;
 
+      // Si no hay fecha de inicio, seleccionar la primera fecha
       if (!start) {
         setTempStartDate(value);
         setDateRange([value, null]);
       } else if (!end) {
+        // Si hay una fecha de inicio pero no de fin
         if (value.getTime() === start.getTime()) {
+          // Si se hace clic en la misma fecha, deseleccionar
           setDateRange([null, null]);
           setTempStartDate(null);
         } else if (value <= start) {
+          // Si la nueva fecha es anterior a la fecha de inicio, cambiar la fecha de inicio
           setTempStartDate(value);
           setDateRange([value, null]);
         } else {
+          // Verificar que haya al menos 4 noches disponibles
           const diffTime = Math.abs(value.getTime() - start.getTime());
           const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
           if (diffDays < 4) {
-            const newEndDate = new Date(start);
-            newEndDate.setDate(newEndDate.getDate() + 4);
+            // Si no hay 4 noches, ajustar la fecha de fin
+            const newEndDate = addDays(start, 4);
             if (!hasBlockedDatesInRange(start, newEndDate)) {
               setDateRange([start, newEndDate]);
               setTempStartDate(null);
             }
           } else {
+            // Si hay 4 noches disponibles, seleccionar el rango
             if (!hasBlockedDatesInRange(start, value)) {
               setDateRange([start, value]);
               setTempStartDate(null);
@@ -107,52 +115,42 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
           }
         }
       } else {
-        if (value.getTime() === end.getTime()) {
-          setDateRange([null, null]);
-          setTempStartDate(null);
-        } else {
-          setTempStartDate(value);
-          setDateRange([start, value]);
-        }
+        // Si hay un rango completo, reiniciar la selección
+        setDateRange([null, null]);
+        setTempStartDate(null);
       }
     },
     [dateRange, hasBlockedDatesInRange],
   );
 
-  const tileClassName = useCallback(
+  const tileContent = useCallback(
     ({ date, view }: { date: Date; view: string }) => {
-      if (view !== "month") return "";
+      if (view !== "month") return null;
 
       const today = new Date();
       today.setHours(0, 0, 0, 0);
 
       if (!isAfter(date, today)) {
-        return "past-date";
+        return <FaTimesCircle className="icon past-date-icon" />;
       }
 
       const [start, end] = dateRange;
 
       if (isDateOccupied(date)) {
-        return "occupied-date";
+        return <FaTimesCircle className="icon occupied-date-icon" />;
       }
 
       if (start && end && date >= start && date <= end) {
-        return "selected-date";
+        return <FaCalendarDay className="icon selected-date-icon" />;
       }
 
-      if (tempStartDate && date.getTime() === tempStartDate.getTime()) {
-        return "temp-selected-date";
-      }
-      if (start && date > start && date <= new Date(start.getTime() + 3 * 24 * 60 * 60 * 1000)) {
-        return "blocked-date";
-      }
       if (!isDateOccupied(date)) {
-        return "available-date";
+        return <FaCheckCircle className="icon available-date-icon" />;
       }
 
-      return "";
+      return null;
     },
-    [dateRange, isDateOccupied, tempStartDate],
+    [dateRange, isDateOccupied],
   );
 
   const tileDisabled = useCallback(
@@ -175,8 +173,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
           return true;
         }
 
-        const minEndDate = new Date(start);
-        minEndDate.setDate(minEndDate.getDate() + 3);
+        const minEndDate = addDays(start, 3);
         if (date > start && date <= minEndDate) {
           return true;
         }
@@ -189,7 +186,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
 
   return (
     <section className="px-8 xl:px-0 w-full mt-[40px] lg:mt-[40px]">
-      <div className="w-full lg:max-w-[1200px] p-12 mx-auto lg:px-[116px] lg:py-[40px] bg-primary-300 rounded-[70px]">
+      <div className="w-full lg:max-w-[1200px] p-12 mx-auto lg:px-[116px] lg:py-[40px] bg-primary-300 rounded-[70px] shadow-lg">
         <h2 className="font-dm tracking-wide text-center leading-[37px] lg:leading-[62.50px] text-[30px] lg:text-[40px] w-full capitalize lg:max-w-[75%] pb-2 mx-auto">
           {ui[lang].booking.calendarTitle}
         </h2>
@@ -200,11 +197,16 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
             <Calendar
               onChange={handleDateChange}
               value={dateRange}
-              tileClassName={tileClassName}
+              tileContent={tileContent}
               tileDisabled={tileDisabled}
               selectRange={false}
-              className="react-calendar"
+              className="react-calendar fancy-calendar"
               locale={lang}
+              navigationLabel={({ date }) => (
+                <span className="text-primary-500 font-semibold">
+                  {new Intl.DateTimeFormat(lang, { month: "long", year: "numeric" }).format(date)}
+                </span>
+              )}
             />
           </div>
         )}
@@ -226,45 +228,53 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
       </div>
 
       <style>{`
-    .react-calendar .occupied-date {
-        position: relative;
-        color: #999;
-        text-decoration: line-through;
+    .fancy-calendar {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 100%;
+        max-width: 400px;
     }
 
-    .react-calendar .occupied-date:hover {
-        background-color: #f0f0f0;
-        cursor: not-allowed;
+    .fancy-calendar .react-calendar__tile {
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
-    .react-calendar .selected-date {
-        background-color: #007bff;
+    .fancy-calendar .react-calendar__tile:hover {
+        background: #f0f0f0;
+        color: #333;
+    }
+
+    .fancy-calendar .react-calendar__tile--active {
+        background: #007bff;
         color: white;
     }
 
-    .react-calendar .temp-selected-date {
-        background-color: #b3d7ff;
-        color: black;
+    .fancy-calendar .icon {
+        font-size: 1.2em;
+        margin-top: 5px;
     }
 
-    .react-calendar .available-date:hover {
-        background-color: #007bff;
+    .fancy-calendar .occupied-date-icon {
+        color: #999;
+    }
+
+    .fancy-calendar .selected-date-icon {
         color: white;
     }
 
-    .react-calendar .blocked-date {
-        background-color: #b3d7ff;
-        color: black;
+    .fancy-calendar .available-date-icon {
+        color: #00c853;
     }
 
-    .react-calendar .past-date {
+    .fancy-calendar .past-date-icon {
         color: #999;
-        text-decoration: line-through;
-    }
-
-    .react-calendar .past-date:hover {
-        background-color: #f0f0f0;
-        cursor: not-allowed;
     }
 `}</style>
     </section>
