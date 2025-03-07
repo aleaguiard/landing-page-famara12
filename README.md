@@ -6,34 +6,25 @@ This repository contains the source code for the Famara project's landing page, 
 
 ### Technologies
 
--   **Astro**: A modern static site builder that optimizes for performance.
--   **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
--   **TypeScript**: Enhances JavaScript with static typing to improve code quality and maintainability.
+- **Astro**: A modern static site builder that optimizes for performance.
+- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+- **TypeScript**: Enhances JavaScript with static typing to improve code quality and maintainability.
 
 ### Functionality
 
--   **Responsive Design**: Ensures optimal viewing experience across a wide range of devices, from mobile phones to desktop computers.
--   **Performance Optimization**: Built with best practices to ensure fast load times and efficient resource usage.
--   **Accessibility**: Designed to be accessible to users with disabilities, following the best practices of web accessibility.
+- **Responsive Design**: Ensures optimal viewing experience across a wide range of devices, from mobile phones to desktop computers.
+- **Performance Optimization**: Built with best practices to ensure fast load times and efficient resource usage.
+- **Accessibility**: Designed to be accessible to users with disabilities, following the best practices of web accessibility.
 
 ### Booking System
 
--   **Synchronized Calendars**: Integrated booking system with synchronized calendars to manage reservations efficiently.
--   **Email Communication**: Email messaging system for booking confirmations and inquiries.
+- **Synchronized Calendars**: Integrated booking system with synchronized calendars to manage reservations efficiently.
+- **Email Communication**: Email messaging system for booking confirmations and inquiries.
 
 ### Multilingual Support
 
--   **i18n**: The site is available in English, Spanish, and Italian.
+- **i18n**: The site is available in English, Spanish, and Italian.
 
 ### Hosting
 
--   **Vercel**: The landing page is deployed on Vercel, ensuring reliable and fast hosting.
-
-## Installation
-
-To set up the project locally, follow these steps:
-
-1. **Clone the Repository**:
-    ```bash
-    git clone https://github.com/aleaguiard/landing-page-famara12.git
-    ```
+- **Vercel**: The landing page is deployed on Vercel, ensuring reliable and fast hosting.
