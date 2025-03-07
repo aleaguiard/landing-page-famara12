@@ -184,15 +184,15 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
   );
 
   return (
-    <section className="px-8 xl:px-0 w-full mt-[40px] lg:mt-[40px]">
-      <div className="w-full lg:max-w-[1200px] p-12 mx-auto lg:px-[116px] lg:py-[40px] bg-primary-300 rounded-[70px] shadow-lg">
-        <h2 className="font-dm tracking-wide text-center leading-[37px] lg:leading-[62.50px] text-[30px] lg:text-[40px] w-full capitalize lg:max-w-[75%] pb-2 mx-auto">
+    <section className="px-4 sm:px-8 xl:px-0 w-full mt-[40px] lg:mt-[40px]">
+      <div className="w-full lg:max-w-[1200px] p-6 sm:p-12 mx-auto lg:px-[116px] lg:py-[40px] bg-primary-300 rounded-[40px] sm:rounded-[70px] shadow-lg">
+        <h2 className="font-dm tracking-wide text-center leading-[30px] sm:leading-[37px] lg:leading-[62.50px] text-[24px] sm:text-[30px] lg:text-[40px] w-full capitalize lg:max-w-[75%] pb-2 mx-auto">
           {ui[lang].booking.calendarTitle}
         </h2>
         {error && <p className="text-red-500 text-center mt-4">{error}</p>}
 
         {selectedAccommodation && (
-          <div className="flex justify-center mt-8 mb-8">
+          <div className="flex justify-center mt-6 mb-6 sm:mt-8 sm:mb-8">
             <Calendar
               onChange={handleDateChange}
               value={dateRange}
@@ -202,7 +202,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
               className="react-calendar fancy-calendar"
               locale={lang}
               navigationLabel={({ date }) => (
-                <span className="text-primary-500 font-semibold">
+                <span className="text-primary-500 font-semibold text-sm sm:text-base">
                   {new Intl.DateTimeFormat(lang, { month: "long", year: "numeric" }).format(date)}
                 </span>
               )}
@@ -231,11 +231,41 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
             background: white;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            padding: 10px;
             width: 100%;
             max-width: 400px;
+            font-size: 14px;
         }
-
+        
+        @media (min-width: 640px) {
+            .fancy-calendar {
+                padding: 20px;
+                font-size: 16px;
+            }
+        }
+        
+        .fancy-calendar .react-calendar__navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .fancy-calendar .react-calendar__navigation button {
+            min-width: 30px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        
+        .fancy-calendar .react-calendar__month-view__weekdays {
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .fancy-calendar .react-calendar__month-view__days {
+            display: grid !important;
+            grid-template-columns: repeat(7, 1fr);
+        }
+        
         .fancy-calendar .react-calendar__tile {
             border-radius: 10px;
             transition: all 0.3s ease;
@@ -243,6 +273,15 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding: 5px 0;
+            height: 40px;
+        }
+        
+        @media (min-width: 640px) {
+            .fancy-calendar .react-calendar__tile {
+                height: 50px;
+                padding: 10px 0;
+            }
         }
 
         .fancy-calendar .react-calendar__tile:hover {
@@ -256,8 +295,15 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
         }
 
         .fancy-calendar .icon {
-            font-size: 1.2em;
-            margin-top: 5px;
+            font-size: 1em;
+            margin-top: 2px;
+        }
+        
+        @media (min-width: 640px) {
+            .fancy-calendar .icon {
+                font-size: 1.2em;
+                margin-top: 5px;
+            }
         }
 
         .fancy-calendar .occupied-date-icon {
