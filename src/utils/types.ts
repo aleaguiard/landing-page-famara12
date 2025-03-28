@@ -44,6 +44,7 @@ export interface BookingFormProps {
   onAccommodationChange: (value: string) => void;
   checkInDate: Date | null;
   checkOutDate: Date | null;
+  onDateChange: (start: Date | null, end: Date | null) => void;
 }
 
 export interface Button {

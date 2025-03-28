@@ -183,6 +183,10 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
     [isDateOccupied],
   );
 
+  const handleExternalDateChange = useCallback((start: Date | null, end: Date | null) => {
+    setDateRange([start, end]);
+  }, []);
+
   return (
     <section className="px-4 sm:px-8 xl:px-0 w-full mt-[40px] lg:mt-[40px]">
       <div className="w-full lg:max-w-[1200px] p-6 sm:p-12 mx-auto lg:px-[116px] lg:py-[40px] bg-primary-300 rounded-[40px] sm:rounded-[70px] shadow-lg">
@@ -192,7 +196,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
         {error && <p className="text-red-500 text-center mt-4">{error}</p>}
 
         {selectedAccommodation && (
-          <div className="flex justify-center mt-6 mb-6 sm:mt-8 sm:mb-8">
+          <div className="flex flex-col items-center mt-6 mb-6 sm:mt-8 sm:mb-8">
             <Calendar
               onChange={handleDateChange}
               value={dateRange}
@@ -207,6 +211,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
                 </span>
               )}
             />
+            <small className="text-text-gray text-xs mt-2">*{ui[lang].booking.minimumStay}</small>
           </div>
         )}
 
@@ -221,6 +226,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ lang }) => {
           onAccommodationChange={handleAccommodationChange}
           checkInDate={dateRange[0]}
           checkOutDate={dateRange[1]}
+          onDateChange={handleExternalDateChange}
         />
 
         <small className="text-text-gray text-xs mt-4 block">{ui[lang].booking.confirmationNote}</small>

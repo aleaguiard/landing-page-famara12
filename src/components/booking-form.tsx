@@ -3,11 +3,27 @@ import { useBookingForm } from "../utils/useBookingForm";
 import Button from "./button";
 import type { BookingFormProps } from "../utils/types";
 
-const BookingForm: React.FC<BookingFormProps> = ({ lang, onAccommodationChange, checkInDate, checkOutDate }) => {
-  const { maxGuests, handleAccommodationTypeChange, handleSubmit, accommodationType } =
-    useBookingForm(onAccommodationChange);
+const BookingForm: React.FC<BookingFormProps> = ({
+  lang,
+  onAccommodationChange,
+  checkInDate,
+  checkOutDate,
+  onDateChange,
+}) => {
+  const {
+    maxGuests,
+    handleAccommodationTypeChange,
+    handleSubmit,
+    accommodationType,
+    handleStartDateChange,
+    handleEndDateChange,
+  } = useBookingForm({
+    onAccommodationChange,
+    onDateChange,
+    initialCheckIn: checkInDate,
+    initialCheckOut: checkOutDate,
+  });
 
-  // Generación de las opciones de hora de check-in
   const generateTimeOptions = () => {
     const options = [];
     for (let hour = 15; hour <= 23; hour++) {
@@ -23,7 +39,6 @@ const BookingForm: React.FC<BookingFormProps> = ({ lang, onAccommodationChange, 
     return options;
   };
 
-  // Convertir las fechas a formato yyyy-mm-dd
   const formattedCheckInDate = checkInDate
     ? `${checkInDate.getFullYear()}-${String(checkInDate.getMonth() + 1).padStart(2, "0")}-${String(
         checkInDate.getDate(),
@@ -34,16 +49,6 @@ const BookingForm: React.FC<BookingFormProps> = ({ lang, onAccommodationChange, 
         checkOutDate.getDate(),
       ).padStart(2, "0")}`
     : "";
-  // Controlador de cambio para fechas
-  const handleStartDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // Actualizar el estado de checkInDate desde el formulario
-    onAccommodationChange(event.target.value);
-  };
-
-  const handleEndDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // Actualizar el estado de checkOutDate desde el formulario
-    onAccommodationChange(event.target.value);
-  };
 
   return (
     <form onSubmit={handleSubmit} className="pt-[32px] lg:pt-[64px]">
@@ -76,7 +81,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ lang, onAccommodationChange, 
             required
             className="w-full px-4 py-2 border rounded-lg font-jost"
             value={formattedCheckInDate}
-            onChange={handleStartDateChange} // Añadir onChange
+            onChange={handleStartDateChange}
           />
         </div>
         <div>
@@ -90,7 +95,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ lang, onAccommodationChange, 
             required
             className="w-full px-4 py-2 border rounded-lg font-jost"
             value={formattedCheckOutDate}
-            onChange={handleEndDateChange} // Añadir onChange
+            onChange={handleEndDateChange}
             placeholder={checkInDate && !checkOutDate ? ui[lang].errors.invalidDate : ""}
           />
         </div>

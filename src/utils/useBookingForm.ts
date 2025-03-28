@@ -1,14 +1,27 @@
 import { useState } from "react";
 
-export const useBookingForm = (onAccommodationChange: (value: string) => void) => {
+interface UseBookingFormProps {
+  onAccommodationChange: (value: string) => void;
+  onDateChange?: (start: Date | null, end: Date | null) => void;
+  initialCheckIn?: Date | null;
+  initialCheckOut?: Date | null;
+}
+
+export const useBookingForm = ({
+  onAccommodationChange,
+  onDateChange,
+  initialCheckIn = null,
+  initialCheckOut = null,
+}: UseBookingFormProps) => {
   const [maxGuests, setMaxGuests] = useState<number | null>(null);
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
+  const [startDate, setStartDate] = useState<Date | null>(initialCheckIn);
+  const [endDate, setEndDate] = useState<Date | null>(initialCheckOut);
   const [accommodationType, setAccommodationType] = useState<string>("");
 
   const handleAccommodationTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
     setAccommodationType(value);
+
     if (value === "House 12") {
       setMaxGuests(4);
     } else if (value === "Loft 12") {
@@ -16,21 +29,39 @@ export const useBookingForm = (onAccommodationChange: (value: string) => void) =
     } else {
       setMaxGuests(null);
     }
+
     onAccommodationChange(value);
   };
 
   const handleStartDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const date = new Date(event.target.value);
-    if (!isNaN(date.getTime())) {
+    const date = event.target.value ? new Date(event.target.value) : null;
+
+    if (date && !isNaN(date.getTime())) {
       setStartDate(date);
+      if (onDateChange) {
+        onDateChange(date, endDate);
+      }
+    } else if (date === null) {
+      setStartDate(null);
+      if (onDateChange) {
+        onDateChange(null, endDate);
+      }
     }
   };
 
   const handleEndDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const date = new Date(event.target.value);
+    const date = event.target.value ? new Date(event.target.value) : null;
 
-    if (!isNaN(date.getTime())) {
+    if (date && !isNaN(date.getTime())) {
       setEndDate(date);
+      if (onDateChange) {
+        onDateChange(startDate, date);
+      }
+    } else if (date === null) {
+      setEndDate(null);
+      if (onDateChange) {
+        onDateChange(startDate, null);
+      }
     }
   };
 
@@ -40,18 +71,13 @@ export const useBookingForm = (onAccommodationChange: (value: string) => void) =
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-    // Validación de campos vacíos
     if (!data.accommodationType || !data.startDate || !data.endDate || !data.guestsNumber) {
       alert("Por favor, complete todos los campos requeridos.");
       return;
     }
 
-    // Validación de fechas
-    const startDateString = data.startDate as string;
-    const endDateString = data.endDate as string;
-
-    const startDateObj = new Date(startDateString);
-    const endDateObj = new Date(endDateString);
+    const startDateObj = new Date(data.startDate as string);
+    const endDateObj = new Date(data.endDate as string);
 
     if (isNaN(startDateObj.getTime()) || isNaN(endDateObj.getTime())) {
       alert("Por favor, ingrese fechas válidas.");
@@ -64,13 +90,11 @@ export const useBookingForm = (onAccommodationChange: (value: string) => void) =
     }
 
     const nightsDifference = (endDateObj.getTime() - startDateObj.getTime()) / (1000 * 3600 * 24);
-
     if (nightsDifference < 4) {
       alert("La estancia mínima es de 4 noches.");
       return;
     }
 
-    // Validación de número de huéspedes
     const guestCount = parseInt(data.guestsNumber as string, 10);
     if (maxGuests === null) {
       alert("Por favor, seleccione un tipo de alojamiento.");
@@ -81,7 +105,6 @@ export const useBookingForm = (onAccommodationChange: (value: string) => void) =
       return;
     }
 
-    // Envío del formulario
     try {
       const response = await fetch("/api/booking", {
         method: "POST",
@@ -98,6 +121,10 @@ export const useBookingForm = (onAccommodationChange: (value: string) => void) =
         setMaxGuests(null);
         setStartDate(null);
         setEndDate(null);
+
+        if (onDateChange) {
+          onDateChange(null, null);
+        }
       } else {
         alert("Error al enviar la solicitud. Por favor, inténtelo de nuevo.");
       }
@@ -109,6 +136,8 @@ export const useBookingForm = (onAccommodationChange: (value: string) => void) =
 
   return {
     maxGuests,
+    startDate,
+    endDate,
     handleAccommodationTypeChange,
     handleStartDateChange,
     handleEndDateChange,
