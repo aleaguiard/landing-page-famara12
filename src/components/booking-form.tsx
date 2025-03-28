@@ -2,6 +2,7 @@ import { ui } from "../i18n/ui";
 import { useBookingForm } from "../utils/useBookingForm";
 import Button from "./button";
 import type { BookingFormProps } from "../utils/types";
+import { useEffect, useRef } from "react";
 
 const BookingForm: React.FC<BookingFormProps> = ({
   lang,
@@ -10,19 +11,28 @@ const BookingForm: React.FC<BookingFormProps> = ({
   checkOutDate,
   onDateChange,
 }) => {
-  const {
-    maxGuests,
-    handleAccommodationTypeChange,
-    handleSubmit,
-    accommodationType,
-    handleStartDateChange,
-    handleEndDateChange,
-  } = useBookingForm({
+  const { maxGuests, handleAccommodationTypeChange, handleSubmit, accommodationType } = useBookingForm({
     onAccommodationChange,
     onDateChange,
     initialCheckIn: checkInDate,
     initialCheckOut: checkOutDate,
   });
+
+  const startDateRef = useRef<HTMLInputElement>(null);
+  const endDateRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const preventNativeDatePicker = (e: MouseEvent) => {
+      if (e.target === startDateRef.current || e.target === endDateRef.current) {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener("click", preventNativeDatePicker);
+    return () => {
+      document.removeEventListener("click", preventNativeDatePicker);
+    };
+  }, []);
 
   const generateTimeOptions = () => {
     const options = [];
@@ -49,6 +59,10 @@ const BookingForm: React.FC<BookingFormProps> = ({
         checkOutDate.getDate(),
       ).padStart(2, "0")}`
     : "";
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+  };
 
   return (
     <form onSubmit={handleSubmit} className="pt-[32px] lg:pt-[64px]">
@@ -81,7 +95,10 @@ const BookingForm: React.FC<BookingFormProps> = ({
             required
             className="w-full px-4 py-2 border rounded-lg font-jost"
             value={formattedCheckInDate}
-            onChange={handleStartDateChange}
+            onChange={handleInputChange}
+            ref={startDateRef}
+            readOnly
+            onFocus={(e) => e.target.blur()}
           />
         </div>
         <div>
@@ -95,7 +112,10 @@ const BookingForm: React.FC<BookingFormProps> = ({
             required
             className="w-full px-4 py-2 border rounded-lg font-jost"
             value={formattedCheckOutDate}
-            onChange={handleEndDateChange}
+            onChange={handleInputChange}
+            ref={endDateRef}
+            readOnly
+            onFocus={(e) => e.target.blur()}
             placeholder={checkInDate && !checkOutDate ? ui[lang].errors.invalidDate : ""}
           />
         </div>
