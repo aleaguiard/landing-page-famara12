@@ -24,9 +24,16 @@ const BookingForm: React.FC<BookingFormProps> = ({ lang, onAccommodationChange, 
   };
 
   // Convertir las fechas a formato yyyy-mm-dd
-  const formattedCheckInDate = checkInDate ? checkInDate.toISOString().split("T")[0] : "";
-  const formattedCheckOutDate = checkOutDate ? checkOutDate.toISOString().split("T")[0] : "";
-
+  const formattedCheckInDate = checkInDate
+    ? `${checkInDate.getFullYear()}-${String(checkInDate.getMonth() + 1).padStart(2, "0")}-${String(
+        checkInDate.getDate(),
+      ).padStart(2, "0")}`
+    : "";
+  const formattedCheckOutDate = checkOutDate
+    ? `${checkOutDate.getFullYear()}-${String(checkOutDate.getMonth() + 1).padStart(2, "0")}-${String(
+        checkOutDate.getDate(),
+      ).padStart(2, "0")}`
+    : "";
   // Controlador de cambio para fechas
   const handleStartDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Actualizar el estado de checkInDate desde el formulario
