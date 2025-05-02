@@ -8,7 +8,7 @@ const lang = getLangFromUrl(Astro.url) as string;
 const translatePath = useTranslatedPath(lang);
 ---
 
-<MainLayout title=`${ui[lang].nav.title} - ${ui[lang].nav.contact}` }>
+<MainLayout title=`${ui[lang].nav.title} - ${ui[lang].nav.contact}` >
 	<!-- Banner Section -->
 	<section
 		class="w-full bg-contact h-[50vh] flex justify-center items-end bg-center bg-cover bg-no-repeat"
