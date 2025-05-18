@@ -14,45 +14,47 @@ const currentPath = Astro.url.pathname;
 ---
 
 <html lang={lang}>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Famara House 12" />
-    <meta title={title} />
-    <link rel="preload" href="/underwater.gif" as="image" />
-    <link rel="preload" href="/BG2.jpg" as="image" />
-    <link rel="preload" href="/BG3.jpg" as="image" />
-    <link rel="preload" href="/BG5.jpg" as="image" />
-    <link rel="icon" type="image/jpg" href="/LogoH.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
-      rel="stylesheet"
-    />
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="description" content="Famara House 12" />
+        <meta title={title} />
+        <link rel="preload" href="/underwater.gif" as="image" />
+        <link rel="preload" href="/BG2.webp" as="image" />
+        <link rel="preload" href="/BG3.webp" as="image" />
+        <link rel="preload" href="/BG5.webp" as="image" />
+        <link rel="icon" type="image/jpg" href="/LogoH.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+            rel="stylesheet"
+        />
 
-    <title>{title}</title>
-  </head>
-  <body>
-    <main class="min-h-screen flex flex-col">
-      <div class="flex-grow bg-main bg-no-repeat bg-cover bg-center">
-        <Navbar client:load lang={lang} currentPath={currentPath} />
-        <slot />
-      </div>
-      <Footer lang={lang} />
-    </main>
-    <p
-      class="tracking-tight text-base text-center border border-gray-300 bg-white py-10 lg:text-[22px] lg:leading-[33px] font-jost text-text-gray"
-    >
-      Copyright © Famara 12 | {ui[lang].footer.license}: VV-35-3-0001836
-    </p>
-  </body>
+        <title>{title}</title>
+    </head>
+    <body>
+        <main class="min-h-screen flex flex-col">
+            <div class="flex-grow bg-main bg-no-repeat bg-cover bg-center">
+                <Navbar client:load lang={lang} currentPath={currentPath} />
+                <slot />
+            </div>
+            <Footer lang={lang} />
+        </main>
+        <p
+            class="tracking-tight text-base text-center border border-gray-300 bg-white py-10 lg:text-[22px] lg:leading-[33px] font-jost text-text-gray"
+        >
+            Copyright © Famara 12 | {ui[lang].footer.license}: VV-35-3-0001836
+        </p>
+    </body>
 </html>
 
 <style>
-  .preload-images::after {
-    content: "";
-    display: none;
-    background-image: url("/underwater.gif"), url("/BG2.jpg"), url("/BG3.jpg"), url("/BG5.jpg");
-  }
+    .preload-images::after {
+        content: "";
+        display: none;
+        background-image:
+            url("/underwater.gif"), url("/BG2.webp"), url("/BG3.webp"),
+            url("/BG5.webp");
+    }
 </style>
